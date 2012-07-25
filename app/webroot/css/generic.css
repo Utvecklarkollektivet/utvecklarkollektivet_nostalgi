@@ -1,13 +1,110 @@
+/* Basics
+============================================ */
+
 body {
     background:#e6e6e6; 
     padding:0; 
     margin:0;
-    font-family: Verdana;
+    font-family: 'Helvetica', 'Arial', sans-serif;
     font-size: 12px;
 }
 
+/* ============================================ End of Basics */ 
+
+/* Structure
+============================================ */
+
+#topborder {
+    background:#207FBF;
+    padding-bottom: 15px;width:100%;
+    background:#1d7ebf;
+    background-image: linear-gradient(bottom, #207FBF 25%, #279AE6 100%);
+    background-image: -o-linear-gradient(bottom, #207FBF 25%, #279AE6 100%);
+    background-image: -moz-linear-gradient(bottom, #207FBF 25%, #279AE6 100%);
+    background-image: -webkit-linear-gradient(bottom, #207FBF 25%, #279AE6 100%);
+    background-image: -ms-linear-gradient(bottom, #207FBF 25%, #279AE6 100%);
+
+    background-image: -webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(0.25, #207FBF),
+        color-stop(1, #279AE6)
+    );
+
+    -webkit-box-shadow: 0px 0px 10px rgba(50, 50, 50, 0.5);
+    -moz-box-shadow:    0px 0px 10px rgba(50, 50, 50, 0.5);
+    box-shadow:         0px 0px 10px rgba(50, 50, 50, 0.5);
+}
+
+#menu { 
+    z-index: 100;
+    background:#1d7ebf;
+    background-image: linear-gradient(bottom, #207FBF 25%, #279AE6 100%);
+    background-image: -o-linear-gradient(bottom, #207FBF 25%, #279AE6 100%);
+    background-image: -moz-linear-gradient(bottom, #207FBF 25%, #279AE6 100%);
+    background-image: -webkit-linear-gradient(bottom, #207FBF 25%, #279AE6 100%);
+    background-image: -ms-linear-gradient(bottom, #207FBF 25%, #279AE6 100%);
+
+    background-image: -webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(0.25, #207FBF),
+        color-stop(1, #279AE6)
+    );
+    width:940px !important; 
+    padding: 0 10px;
+    margin-top: 50px;
+    -webkit-border-radius: 10px 10px 10px 10px;
+    -moz-border-radius:    5px 5px 5px 5px;
+    -khtml-border-radius:  5px 5px 5px 5px;
+    border-radius:         10px; 
+    -webkit-box-shadow: 0px 0px 10px rgba(50, 50, 50, 0.3);
+    -moz-box-shadow:    0px 0px 10px rgba(50, 50, 50, 0.3);
+    box-shadow:         0px 0px 10px rgba(50, 50, 50, 0.3);
+    border: 1px solid #165780;
+}
+
+#container { 
+    background:#f7f7f7; 
+    background-image: linear-gradient(bottom, #EDEDED 25%, #F7F7F7 100%);
+    background-image: -o-linear-gradient(bottom, #EDEDED 25%, #F7F7F7 100%);
+    background-image: -moz-linear-gradient(bottom, #EDEDED 25%, #F7F7F7 100%);
+    background-image: -webkit-linear-gradient(bottom, #EDEDED 25%, #F7F7F7 100%);
+    background-image: -ms-linear-gradient(bottom, #EDEDED 25%, #F7F7F7 100%);
+
+    background-image: -webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(0.25, #EDEDED),
+        color-stop(1, #F7F7F7)
+    );
+    width:960px; 
+    padding-bottom: 10px;
+    margin-top: 20px;
+    -webkit-border-radius: 10px; -moz-border-radius: 10px; -khtml-border-radius:  10px; border-radius:10px; 
+    -webkit-box-shadow: 0px 0px 10px rgba(50, 50, 50, 0.3); -moz-box-shadow: 0px 0px 10px rgba(50, 50, 50, 0.3); box-shadow: 0px 0px 10px rgba(50, 50, 50, 0.3);
+    border: 1px solid #ccc;
+}
+
+
+#footer {
+    font-family:tahoma;
+    font-size:11px;
+    text-align:center;
+    color:#666;
+    margin-top:10px;
+}
+
+/* ============================================ End of Structure */
+
+/* Text
+============================================ */
+
 h1 {
-    font-family: Arial;
+    font-family: 'Helvetica', 'Arial', sans-serif;
     font-size: 30px;
     font-weight: normal;
     padding: 0px;
@@ -15,7 +112,7 @@ h1 {
 }
 
 h2 {
-    font-family: Arial;
+    font-family: 'Helvetica', 'Arial', sans-serif;
     font-size: 24px;
     font-weight: normal;
     padding: 0px;
@@ -23,7 +120,7 @@ h2 {
 }
 
 h3 {
-    font-family: Arial;
+    font-family: 'Helvetica', 'Arial', sans-serif;
     font-size: 18px;
     font-weight: normal;
     padding: 0px;
@@ -31,9 +128,96 @@ h3 {
 }
 
 a:link    {color:#1d7ebf; text-decoration:underline;}
-a:visited {color:#1d7ebf;}
+a:visited {color:#1d7ebf; }
 a:hover   {color:#1d7ebf; text-decoration:none;}
-a:active  {color:#1d7ebf;}
+a:active  {color:#1d7ebf; }
+
+/* ============================================ End of Text*/
+
+/* Menu
+============================================ */
+
+#menu a {
+    padding: 8px;
+    display: block;
+    color: #121212; 
+    text-decoration: none; 
+}
+
+    #menu > ul > li > a {
+        font: bold 14px 'Helvetica', 'Arial', sans-serif;
+        margin: 0 4px;
+        padding: 15px 10px;
+        width: 100px;
+        text-align: center;
+    }
+
+    #menu > ul > li > a:hover:before{
+        content: ">  ";
+        color: #f3f3f3;
+        text-shadow: 0 1px 2px #d96c6c;
+        filter: dropshadow(color=#d96c6c, offx=1, offy=2);
+    }
+
+    #menu > ul > li > a:hover:after{
+        content: " <";
+        color: #f3f3f3;
+        text-shadow: 0 1px 2px #d96c6c;
+        filter: dropshadow(color=#d96c6c, offx=1, offy=2);
+    }
+
+    #menu ul li ul li a:hover {
+        font-weight: bold;
+    }
+
+    #menu ul li ul li a {
+        font: 13px 'Helvetica', 'Arial', sans-serif;
+    }
+
+#menu ul {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+
+#menu ul li {
+    margin: 0px;
+    float: left;
+    list-style: none
+}
+
+#menu ul li ul {
+    border-radius: 0 0 5px 5px;
+    border: 1px solid #165780;
+    border-top: none;
+    width: 150px;
+    z-index: 100;
+    display: none;
+    position: absolute;
+    background-image: linear-gradient(bottom, #258FCC 0%, #207FBF 100%);
+    background-image: -o-linear-gradient(bottom, #258FCC 0%, #207FBF 100%);
+    background-image: -moz-linear-gradient(bottom, #258FCC 0%, #207FBF 100%);
+    background-image: -webkit-linear-gradient(bottom, #258FCC 0%, #207FBF 100%);
+    background-image: -ms-linear-gradient(bottom, #258FCC 0%, #207FBF 100%);
+
+    background-image: -webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(0, #258FCC),
+        color-stop(1, #207FBF)
+    );
+}
+
+#menu ul li ul li {
+    float: none;
+    text-align: left;
+}
+
+/* ============================================ End of Menu */
+
+/* Input Fields
+============================================ */
 
 input[type=text] {
     width: 289px;
@@ -47,7 +231,7 @@ textarea {
 
 input[type=submit], button {
     margin: 3px 0px;
-    border: 1px solid #666;
+    border: 1px solid #777;
     padding: 5px 15px;
     cursor: pointer;
     font-family: Georgia,"Nimbus Roman No9 L",serif;
@@ -71,24 +255,30 @@ input[type=submit] {
     background-image: -ms-linear-gradient(top, #e97171, #d14545);
     background-image: -o-linear-gradient(top, #e97171, #d14545);
     background-image: linear-gradient(top, #e97171, #d14545);
+    border-color: #ab3232;
 }
 
 input[type=submit]:hover {
-    background-color: #d15a5a;
-    background-image: linear-gradient(bottom, #EB9292 100%, #D15A5A 0%);
-    background-image: -o-linear-gradient(bottom, #EB9292 100%, #D15A5A 0%);
-    background-image: -moz-linear-gradient(bottom, #EB9292 100%, #D15A5A 0%);
-    background-image: -webkit-linear-gradient(bottom, #EB9292 100%, #D15A5A 0%);
-    background-image: -ms-linear-gradient(bottom, #EB9292 100%, #D15A5A 0%);
-    
+    background-color: #D15A5A;
+    background-image: linear-gradient(bottom, #E87E7E 100%, #D15A5A 0%);
+    background-image: -o-linear-gradient(bottom, #E87E7E 100%, #D15A5A 0%);
+    background-image: -moz-linear-gradient(bottom, #E87E7E 100%, #D15A5A 0%);
+    background-image: -webkit-linear-gradient(bottom, #E87E7E 100%, #D15A5A 0%);
+    background-image: -ms-linear-gradient(bottom, #E87E7E 100%, #D15A5A 0%);
+
     background-image: -webkit-gradient(
         linear,
-    	left bottom,
-    	left top,
-    	color-stop(1, #EB9292),
-    	color-stop(0, #D15A5A)
+        left bottom,
+        left top,
+        color-stop(1, #E87E7E),
+        color-stop(0, #D15A5A)
     );
 }
+
+/* ============================================ End of Input Fields */
+
+/* Buttons
+============================================ */
 
 button {
     background-color:#A8A8A8;
@@ -101,122 +291,94 @@ button {
 }
 
 button:hover {
-    background-color:#8B8B8B;
-    background-image: linear-gradient(bottom, #BBB 100%, #888 0%);
-    background-image: -o-linear-gradient(bottom, #BBB 100%, #888 0%);
-    background-image: -moz-linear-gradient(bottom, #BBB 100%, #888 0%);
-    background-image: -webkit-linear-gradient(bottom, #BBB 100%, #888 0%);
-    background-image: -ms-linear-gradient(bottom, #BBB 100%, #888 0%);
+    background-color:#A6A6A6;
+    background-image: linear-gradient(bottom, #AAA 100%, #777 0%);
+    background-image: -o-linear-gradient(bottom, #AAA 100%, #777 0%);
+    background-image: -moz-linear-gradient(bottom, #AAA 100%, #777 0%);
+    background-image: -webkit-linear-gradient(bottom, #AAA 100%, #777 0%);
+    background-image: -ms-linear-gradient(bottom, #AAA 100%, #777 0%);
     
     background-image: -webkit-gradient(
         linear,
-    	left bottom,
+        left bottom,
     	left top,
-    	color-stop(1, #BBB),
-    	color-stop(0, #888)
+    	color-stop(1, #AAA),
+    	color-stop(0, #777)
     );
 }
 
+/* ============================================ End of Buttons */
+
+
+
+
+
+
+
+
+
+/* Vad används denna till ? ???? ?? ?? ? ??  */
+/* Fikuzen undrar? */
 table td {
     padding: 3px 3px 0px 0px
 }
 
-.clear_both {
-    clear: both;
-}
+
+
+
+
+
+
+
+
+
+
+
+/* Custom Messages
+============================================ */
 
 .error_message {
-    background: #FFCCCC;
-    padding: 5px;
-    margin: 10px 0px;
-    -webkit-border-radius: 10px 10px 10px 10px;
-    -moz-border-radius:    5px 5px 5px 5px;
-    -khtml-border-radius:  5px 5px 5px 5px;
-    border-radius:         5px 5px 5px 5px; 
-}
-
-#topborder {
-    background:#1d7ebf;
-    padding-bottom: 15px;width:100%;
-}
-
-#menu { 
-    z-index: 100;
-    background:#1d7ebf; 
-    width:940px !important; 
-    padding: 5px 10px;
-    margin-top: 50px;
-    -webkit-border-radius: 10px 10px 10px 10px;
-    -moz-border-radius:    5px 5px 5px 5px;
-    -khtml-border-radius:  5px 5px 5px 5px;
-    border-radius:         5px 5px 5px 5px; 
-    -webkit-box-shadow: 0px 0px 10px rgba(50, 50, 50, 0.3);
-    -moz-box-shadow:    0px 0px 10px rgba(50, 50, 50, 0.3);
-    box-shadow:         0px 0px 10px rgba(50, 50, 50, 0.3);
-}
-
-#menu a {
-    color: #000000; 
-    text-decoration: none; 
-    font-size: 14px;
-    font-family: Arial;
+    color: #fff;
+    background: #d96c6c;
+    border: 1px solid #bf4343;
     padding: 10px;
+    margin: 25px auto;
+    width: 85%;
+    font:italic 14px Georgia,"Nimbus Roman No9 L",serif;
+    color: #fff;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    text-shadow: 0 1px 0 rgba(0,0,0,.5);
+    -moz-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3) inset;
+    -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3) inset;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3) inset;    
+}
+
+/* ============================================ End of Custom Messages*/
+
+/* ClearFix
+============================================ */
+
+.clear_both:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+ 
+.clear_both {
+    display: inline-block;
+}
+ 
+html[xmlns] .clear_both {
     display: block;
 }
-
-#menu ul li ul li a:hover {
-    background: #DDD;
+ 
+* html .clear_both {
+    height: 1%;
 }
 
-#menu ul {
-    margin: 0px;
-    padding: 0px;
-    list-style: none;
-}
-
-#menu ul li {
-    margin: 0px;
-    float: left;
-    list-style: none
-}
-
-#menu ul li h1 {
-    font-size: 14px;
-    margin: 0px;
-    padding: 0px;
-}
-
-#menu ul li ul {
-    z-index: 100;
-    display: none;
-    position: absolute;
-    background: #CCC;
-}
-
-#menu ul li ul li {
-    float: none;
-}
-
-#container { 
-    background:#f5f5f5; 
-    width:960px; 
-    padding-bottom: 10px;
-    margin-top: 20px;
-    -webkit-border-radius: 10px 10px 10px 10px;
-    -moz-border-radius:    5px 5px 5px 5px;
-    -khtml-border-radius:  5px 5px 5px 5px;
-    border-radius:         5px 5px 5px 5px; 
-    -webkit-box-shadow: 0px 0px 10px rgba(50, 50, 50, 0.3);
-    -moz-box-shadow:    0px 0px 10px rgba(50, 50, 50, 0.3);
-    box-shadow:         0px 0px 10px rgba(50, 50, 50, 0.3);
-}
-
-
-#footer {
-    font-family:tahoma;
-    font-size:11px;
-    text-align:center;
-    color:#666;
-    margin-top:10px;
-}
-
+/* ============================================ End of ClearFix */

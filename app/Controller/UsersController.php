@@ -146,12 +146,13 @@ class UsersController extends AppController {
         } else {
             $this->User->recursive = 0;
             $this->request->data = $this->User->read(
-                array('User.username', 'Group.name'), 
+                array('User.username', 'Group.id', 'Group.name'), 
                 $id
             );
         }
         $groups = $this->User->Group->find('list');
         $this->set(compact('groups'));
+        $this->set('selectedGroup', $this->User->data['Group']['id']);
     }
 
     /**

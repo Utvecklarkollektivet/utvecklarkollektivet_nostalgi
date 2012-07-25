@@ -3,8 +3,10 @@
 <?php echo $this->Form->create('User'); ?>
 	<?php
 		echo $this->Form->input('username', array('label' => false));
+        echo "\n";
 		echo $this->Form->input('password', array('label' => false, 'placeholder' => 'Nytt lösenord...'));
-		echo $this->Form->input('group_id', array('label' => false, 'empty' => $this->request->data['Group']['name']));
+        echo "\n";
+		echo $this->Form->input('group_id', array('label' => false, 'selected' => $selectedGroup));
 	?>
 <?php echo $this->Form->end('Spara'); ?>
 </div>

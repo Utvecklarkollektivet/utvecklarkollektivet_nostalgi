@@ -1,12 +1,18 @@
-<h1 class="grid_12">Editera grupp: <?php echo $this->data['Group']['name']; ?></h1>
+<h1 class="grid_12">Editerar gruppen { <?php echo $this->data['Group']['name']; ?> }</h1>
 <div class="clear"></div>
 
 <?php echo $this->Form->create('Group'); ?>
-
     <div class="grid_12">
         <h3>Generella inställningar</h3>
         <?php
-            echo $this->Form->input('name', array('label' => false, 'error' => false, 'placeholder' => 'Gruppnamn...'));
+            echo $this->Form->input(
+                'name', 
+                array(
+                    'label' => false, 
+                    'error' => false, 
+                    'placeholder' => 'Gruppnamn...',
+                    'class' => 'input_field'
+                ));
         ?>
     </div>
     <div class="clear"></div>

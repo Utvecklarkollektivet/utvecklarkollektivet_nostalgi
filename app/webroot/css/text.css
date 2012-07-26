@@ -9,7 +9,7 @@
 ----------------------------------------------------------------------------------------------------*/
 
 body {
-  font: 16px/1.441 'Helvetica Neue', Arial, 'Liberation Sans', FreeSans, sans-serif;
+  font: 16px/1.441 'Tahoma', 'Helvetica Neue', Arial, 'Liberation Sans', FreeSans, sans-serif;
 }
 
 pre,
@@ -63,7 +63,7 @@ ul {
 }
 
 li {
-  margin-left: 30px;
+  margin-left: 15px;
 }
 
 p,

@@ -4,7 +4,14 @@
 <div class="grid_4">
     <?php echo $this->Form->create('Group'); ?>
         <?php
-            echo $this->Form->input('name', array('label' => false, 'placeholder' => 'Namn...', 'error' => false));
+            echo $this->Form->input(
+                'name', 
+                array(
+                    'label' => false, 
+                    'placeholder' => 'Gruppnamn...', 
+                    'error' => false,
+                    'class' => 'input_field'
+                ));
         ?>
     <?php echo $this->Form->end(__('Submit')); ?>
 

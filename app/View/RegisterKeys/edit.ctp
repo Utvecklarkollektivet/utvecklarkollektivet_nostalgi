@@ -1,22 +1,21 @@
-<div class="registerKeys form">
-<?php echo $this->Form->create('RegisterKey'); ?>
-	<fieldset>
-		<legend><?php echo __('Edit Register Key'); ?></legend>
-	<?php
-		echo $this->Form->input('id');
-		echo $this->Form->input('user_id');
-		echo $this->Form->input('comment');
-		echo $this->Form->input('key');
-		echo $this->Form->input('group_id');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
+<h1 class="grid_12">Editerar nyckel { <?php echo $this->data['RegisterKey']['key']; ?> }</h1>
 
-		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('RegisterKey.id')), null, __('Are you sure you want to delete # %s?', $this->Form->value('RegisterKey.id'))); ?></li>
-		<li><?php echo $this->Html->link(__('List Register Keys'), array('action' => 'index')); ?></li>
-	</ul>
+<?php echo $this->Form->create('RegisterKey'); ?>
+<div class="grid_6">
+	<div class="registerKeys form">	
+		<?php
+			echo $this->Form->input('id'); // Är den här raden verkligen nödvändig???? (Fikuzen);
+			echo $this->Form->input('user_id',array('class' => 'input_field'));
+			echo $this->Form->input('comment');
+			echo $this->Form->input('key', array('class' => 'input_field'));
+			echo $this->Form->input('group_id');
+		?>
+		<?php echo $this->Form->end(__('Submit')); ?>
+	</div>
+	<div class="actions">
+		<ul>
+			<li><?php echo 'Do you want to ' . $this->Form->postLink(__('delete'), array('action' => 'delete', $this->Form->value('RegisterKey.id')), null, __('Are you sure you want to delete # %s?', $this->Form->value('RegisterKey.id'))) . ' the key'; ?></li>
+			<li><?php echo 'Go back and ' . $this->Html->link(__('list other registerkeys'), array('action' => 'index')); ?></li>
+		</ul>
+	</div>
 </div>

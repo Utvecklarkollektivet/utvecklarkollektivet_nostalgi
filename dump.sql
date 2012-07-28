@@ -24,11 +24,11 @@ DROP TABLE IF EXISTS `acl_permissions`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `acl_permissions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `aros_id` int(11) NOT NULL,
-  `controller` varchar(100) NOT NULL,
+  `aro_id` int(11) NOT NULL,
+  `aco_id` int(11) NOT NULL,
   `permission` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `aros_permission` (`aros_id`,`controller`)
+  UNIQUE KEY `acl_permission` (`aro_id`,`aco_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -38,7 +38,7 @@ CREATE TABLE `acl_permissions` (
 
 LOCK TABLES `acl_permissions` WRITE;
 /*!40000 ALTER TABLE `acl_permissions` DISABLE KEYS */;
-INSERT INTO `acl_permissions` VALUES (1,1,'controllers',1);
+INSERT INTO `acl_permissions` VALUES (1,1,1,1);
 /*!40000 ALTER TABLE `acl_permissions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -67,7 +67,7 @@ CREATE TABLE `acos` (
 
 LOCK TABLES `acos` WRITE;
 /*!40000 ALTER TABLE `acos` DISABLE KEYS */;
-INSERT INTO `acos` VALUES (1,NULL,NULL,NULL,'controllers',1,64),(2,1,NULL,NULL,'RegisterKeys',2,13),(3,2,NULL,NULL,'index',3,4),(4,2,NULL,NULL,'view',5,6),(5,2,NULL,NULL,'add',7,8),(6,2,NULL,NULL,'edit',9,10),(7,2,NULL,NULL,'delete',11,12),(8,1,NULL,NULL,'Groups',14,25),(9,8,NULL,NULL,'index',15,16),(10,8,NULL,NULL,'view',17,18),(11,8,NULL,NULL,'add',19,20),(12,8,NULL,NULL,'edit',21,22),(13,8,NULL,NULL,'delete',23,24),(14,1,NULL,NULL,'Posts',26,29),(15,14,NULL,NULL,'add',27,28),(16,1,NULL,NULL,'Thread',30,37),(17,16,NULL,NULL,'index',31,32),(18,16,NULL,NULL,'view',33,34),(19,16,NULL,NULL,'write',35,36),(20,1,NULL,NULL,'Pages',38,41),(21,20,NULL,NULL,'display',39,40),(22,1,NULL,NULL,'AclManagers',42,47),(23,22,NULL,NULL,'index',43,44),(24,22,NULL,NULL,'rewrite_acos',45,46),(25,1,NULL,NULL,'Users',48,63),(26,25,NULL,NULL,'index',49,50),(27,25,NULL,NULL,'login',51,52),(28,25,NULL,NULL,'logout',53,54),(29,25,NULL,NULL,'view',55,56),(30,25,NULL,NULL,'add',57,58),(31,25,NULL,NULL,'edit',59,60),(32,25,NULL,NULL,'delete',61,62);
+INSERT INTO `acos` VALUES (1,NULL,NULL,NULL,'controllers',1,64),(2,1,NULL,NULL,'RegisterKeys',2,13),(3,2,NULL,NULL,'index',3,4),(4,2,NULL,NULL,'view',5,6),(5,2,NULL,NULL,'add',7,8),(6,2,NULL,NULL,'edit',9,10),(7,2,NULL,NULL,'delete',11,12),(8,1,NULL,NULL,'Groups',14,25),(9,8,NULL,NULL,'index',15,16),(10,8,NULL,NULL,'view',17,18),(11,8,NULL,NULL,'add',19,20),(12,8,NULL,NULL,'edit',21,22),(13,8,NULL,NULL,'delete',23,24),(14,1,NULL,NULL,'Index',26,29),(15,14,NULL,NULL,'display',27,28),(16,1,NULL,NULL,'Posts',30,33),(17,16,NULL,NULL,'add',31,32),(18,1,NULL,NULL,'Thread',34,41),(19,18,NULL,NULL,'index',35,36),(20,18,NULL,NULL,'view',37,38),(21,18,NULL,NULL,'write',39,40),(22,1,NULL,NULL,'AclManagers',42,47),(23,22,NULL,NULL,'index',43,44),(24,22,NULL,NULL,'rewrite_acos',45,46),(25,1,NULL,NULL,'Users',48,63),(26,25,NULL,NULL,'index',49,50),(27,25,NULL,NULL,'login',51,52),(28,25,NULL,NULL,'logout',53,54),(29,25,NULL,NULL,'view',55,56),(30,25,NULL,NULL,'add',57,58),(31,25,NULL,NULL,'edit',59,60),(32,25,NULL,NULL,'delete',61,62);
 /*!40000 ALTER TABLE `acos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -87,7 +87,7 @@ CREATE TABLE `aros` (
   `lft` int(10) DEFAULT NULL,
   `rght` int(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=45 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -96,7 +96,7 @@ CREATE TABLE `aros` (
 
 LOCK TABLES `aros` WRITE;
 /*!40000 ALTER TABLE `aros` DISABLE KEYS */;
-INSERT INTO `aros` VALUES (1,NULL,'Group',1,NULL,1,16);
+INSERT INTO `aros` VALUES (1,NULL,'Group',1,NULL,1,2);
 /*!40000 ALTER TABLE `aros` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -117,7 +117,7 @@ CREATE TABLE `aros_acos` (
   `_delete` varchar(2) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `ARO_ACO_KEY` (`aro_id`,`aco_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -142,7 +142,7 @@ CREATE TABLE `groups` (
   `name` varchar(100) NOT NULL,
   `created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -151,7 +151,7 @@ CREATE TABLE `groups` (
 
 LOCK TABLES `groups` WRITE;
 /*!40000 ALTER TABLE `groups` DISABLE KEYS */;
-INSERT INTO `groups` VALUES (1,'AdministratÃ¶rer','2012-07-16 17:25:13');
+INSERT INTO `groups` VALUES (1,'AdministratÃ¶rer','2012-07-28 22:05:09');
 /*!40000 ALTER TABLE `groups` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -199,7 +199,7 @@ CREATE TABLE `register_keys` (
   `group_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `key` (`key`)
-) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -208,7 +208,7 @@ CREATE TABLE `register_keys` (
 
 LOCK TABLES `register_keys` WRITE;
 /*!40000 ALTER TABLE `register_keys` DISABLE KEYS */;
-INSERT INTO `register_keys` VALUES (28,22,'Auto','1111-1111-1111-1111',1);
+INSERT INTO `register_keys` VALUES (1,1,'auto','1111-1111-1111-1111',1);
 /*!40000 ALTER TABLE `register_keys` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -255,7 +255,7 @@ CREATE TABLE `users` (
   `created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -276,4 +276,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2012-07-24 18:38:10
+-- Dump completed on 2012-07-28 22:07:10

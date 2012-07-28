@@ -56,7 +56,6 @@ class GroupsController extends AppController {
                 
                 $this->loadModel('AclManager');
                 $this->AclManager->setGroupPermissions(
-                    $this->Acl,
                     $this->Group->getInsertID(),
                     $this->request->data['Group']['permissions'] 
                 );
@@ -87,7 +86,6 @@ class GroupsController extends AppController {
                 $this->loadModel('AclManager');
                 $this->AclManager->deleteGroupPermissions($id);
                 $this->AclManager->setGroupPermissions(
-                    $this->Acl,
                     $this->Group->id,
                     $this->request->data['Group']['permissions'] 
                 );

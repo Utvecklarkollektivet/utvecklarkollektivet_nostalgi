@@ -11,7 +11,7 @@ class AclManagersController extends AppController {
             $this->redirect(array('action' => 'index'));
         }
         $start = microtime(true);
-        $this->AclManager->rewriteAcos($this->Acl);   
+        $this->AclManager->rewriteAcos($this->Acl);
         $this->set(
             'executionTime',
             (sprintf("%.9f", ceil( (microtime(true) - $start) * 1000) / 1000000000))

@@ -1,11 +1,17 @@
 <?php
-
+/**
+ * This helper creates a menu from MenuComponent::generateMenu() array.
+ */
 class MenuHelper extends AppHelper {
 
+    /**
+     * Generate the menu in html.
+     *
+     * @param array $menuArray Array from MenuComponent::generateMenu()
+     * @return string
+     */
     public function generate($menuArray) {
-
         $html = '<ul>';
-
         foreach ($menuArray as $item => $options) {
             $html .= sprintf('<li><a href="%s">%s</a>', $options['link'], $item);
 
@@ -22,11 +28,9 @@ class MenuHelper extends AppHelper {
             }
             $html .= '</li>';
         }
-
         $html .= '</ul>';
         return $html;
     }
-
 }
 
 ?>

@@ -1,9 +1,29 @@
 <?php
-
+/**
+ * Implements Acl on menu items.
+ */
 class MenuComponent extends Component {
 
+    /**
+     * Import components
+     */
     public $components = array('Auth', 'Acl');
 
+    /**
+     * Generate menu from array.
+     *
+     * The $menuArray should be an array of the form:
+     *  array(
+     *      'link text' => array(
+     *          'link' => '/link_location/',
+     *          'access' => 'controllers/check_access|true if always access',
+     *          'submenu' => '(optional) array of the same type as this'
+     *      ),
+     *      'Next link text' => [...]
+     *
+     * @parem array
+     * @return array This array can be used in the MenuHelper
+     */
     public function generateMenu($menuArray) {
 
         $menu = array();
@@ -31,9 +51,7 @@ class MenuComponent extends Component {
                 $menu[$item]['submenu'] = $submenu;
             }
         }
-
         return $menu;
-
     }
 
 }

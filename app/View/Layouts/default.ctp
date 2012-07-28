@@ -25,38 +25,7 @@
 <div id="topborder"></div>
 
 <div id="menu" class="container_12">
-    <ul>
-        <li>
-            <a href="/">Start</a>
-        </li>
-        <li>
-            <a href="/users/">Användare</a>
-            <ul>
-                <li>
-                    <a href="/users/">Visa användare</a>
-                </li>
-                <li>
-                    <a href="/register_keys/">Visa registreringsnycklar</a>
-                </li>
-                <li>
-                    <a href="/register_keys/add">Skapa registreringsnyckel</a>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a href="/groups/">Grupper</a>
-            <ul>
-                <li><a href="/groups/">Visa grupper</a></li>
-                <li><a href="/groups/add/">Lägg till grupp</a></li>
-            </ul>
-        </li>
-        <li>
-            <a href="/acl_managers/">Acl</a>
-        </li>
-        <li>
-            <a href="/users/logout/">Logga ut</a>
-        </li>
-    </ul>
+    <?php echo $this->Menu->generate($menu); ?>
 </div>
 
 <div id="container" class="container_12">

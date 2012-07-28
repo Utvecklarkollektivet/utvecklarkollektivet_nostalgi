@@ -65,4 +65,12 @@ class Group extends AppModel {
         return null;
     }
 
+    /**
+     * Delete the acl_permission-rows.
+     */
+    public function delete() {
+        ClassRegistry::init('AclManager')->deleteGroupPermissions($this->id);
+        return parent::delete();
+    }
+
 }

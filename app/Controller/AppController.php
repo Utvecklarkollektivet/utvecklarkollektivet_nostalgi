@@ -39,7 +39,8 @@ class AppController extends Controller {
                 'Actions' => array('actionPath' => 'controllers')
             )
         ),
-        'Session'
+        'Session',
+        'Menu'
     );
 
     public $helpers = array('Html', 'Form', 'Session');
@@ -48,6 +49,7 @@ class AppController extends Controller {
      * beforeFilter is run before anything else
      */
     public function beforeFilter() {
+        parent::beforeFilter();
 
         // Auth-settings
         $this->Auth->loginAction = array(
@@ -56,7 +58,58 @@ class AppController extends Controller {
             'controller' => 'users', 'action' => 'login');
         $this->Auth->loginRedirect = array(
             'controller' => '', 'action' => 'index');
-        
+    }
+
+    /**
+     * beforeRender is run before view the layout.
+     */
+    public function beforeRender() {
+        parent::beforeRender();
+
+        $menuArray = array(
+            'Start' => array(
+                'link' => '/',
+                'access' => 'controllers/Index/display'
+            ),
+
+            'Användare' => array(
+                'link' => '/users/',
+                'access' => 'controllers/Users/index',
+                'submenu' => array(
+                    'Visa användare' => array(
+                        'link' => '/users/',
+                        'access' => 'controllers/Users/index',
+                    ),
+                    'Visa grupper' => array(
+                        'link' => '/groups/',
+                        'access' => 'controllers/Groups/index'
+                    ),
+                    'Skapa grupp' => array(
+                        'link' => '/groups/add/',
+                        'access' => 'controllers/Groups/add'
+                    ),
+                    'Visa registreringsnycklar' => array(
+                        'link' => '/register_keys/',
+                        'access' => 'controllers/RegisterKeys/index'
+                    ),
+                    'Skapa registreringsnyckel' => array(
+                        'link' => '/register_keys/add/',
+                        'access' => 'controllers/RegisterKeys/add'
+                    ),
+                    'Aclhanteraren' => array(
+                        'link' => '/acl_managers/',
+                        'access' => 'controllers/AclManagers/index'
+                    )
+                )
+            ),
+            'Logga ut' => array(
+                'link' => '/users/logout',
+                'access' => true
+            )
+        );
+
+        if ($this->Auth->User('id') !== null)
+        $this->set('menu', $this->Menu->generateMenu($menuArray));
     }
 
 }

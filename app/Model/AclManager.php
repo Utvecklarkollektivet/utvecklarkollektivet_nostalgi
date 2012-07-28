@@ -195,7 +195,9 @@ class AclManager extends AppModel {
         $this->query('LOCK TABLES acos WRITE, aros WRITE, 
                       aros_acos WRITE, acl_permissions AS acl READ,
                       aros AS Aro READ, aros AS Aro0 READ,
+                      aros AS Aro1 READ,
                       acos AS Aco READ, acos AS Aco0 READ,
+                      acos AS Aco1 READ,
                       aros_acos AS Permission WRITE');
     }
 
@@ -206,6 +208,21 @@ class AclManager extends AppModel {
         $this->query('UNLOCK TABLES');
     }
 
+    /**
+     *
+     */
+    public function deleteGroupPermissions($groupID) {
+        $groupID = intval($groupID);
+        $result = $this->query("
+            SELECT id 
+            FROM aros WHERE model = 'Group' 
+                AND foreign_key = '$groupID'
+            LIMIT 1
+        ");
+        $aroID = $result[0]['aros']['id'];
+        $this->query("DELETE FROM acl_permissions WHERE aros_id = '$aroID'");
+        $this->query("DELETE FROM aros_acos WHERE aro_id = '$aroID'");
+    }
 
     /**
      * Truncates the acos table and rewrite all acos. This also updates the
@@ -226,6 +243,92 @@ class AclManager extends AppModel {
         $this->truncateArosAcos();
         $this->writeArosAcos($acl);
         $this->unlockAclTables();
+    }
+
+
+    /**
+     * Get the groups permissions.
+     *
+     * @param integer The id of the group
+     * @return array
+     */
+    public function getGroupPermissions($groupID) {
+        $groupID = intval($groupID);
+
+        $sql = "SELECT acos.alias, acos.id FROM aros
+                LEFT JOIN aros_acos ON (aros_acos.aro_id=aros.id)
+                LEFT JOIN acos ON (acos.id=aros_acos.aco_id)
+                WHERE aros.foreign_key = '$groupID'";
+        $permissions = $this->query($sql);
+
+        $styledArray = array();
+        foreach ($permissions as $permission) {
+            $styledArray[$permission['acos']['id']] = $permission['acos']['alias'];
+        }
+
+        return $styledArray;
+    }
+
+    /**
+     * Returns all acos
+     */
+    public function getAllAcos() {
+        $sql = "SELECT acos.id, acos.alias, acos.parent_id FROM acos ORDER BY lft";
+        $acos = $this->query($sql);
+        return $acos;
+    }
+
+    /**
+     * Set privilege.
+     */
+    public function setGroupPermission($acl, $groupID, $acoID, $allow = true) {
+        $acoID = intval($acoID);
+        $groupID = intval($groupID);
+        $result = $this->query(
+            "SELECT id FROM aros
+             WHERE foreign_key = '$groupID'
+                AND model = 'Group'
+             LIMIT 1"
+        );
+        $aroID = $result[0]['aros']['id'];
+
+        $result = $this->query(
+            "SELECT a1.alias, a2.alias, a3.alias FROM acos AS a1
+             LEFT JOIN acos AS a2 ON(a1.parent_id=a2.id)
+             LEFT JOIN acos AS a3 ON(a2.parent_id=a3.id)
+             WHERE a1.id = '$acoID'
+             LIMIT 1"
+        );
+
+        $alias = $result[0]['a3']['alias'] ? $result[0]['a3']['alias'].'/':'';
+        $alias .= $result[0]['a2']['alias'] ? $result[0]['a2']['alias'].'/':'';
+        $alias .= $result[0]['a1']['alias'];
+
+
+        debug($alias);
+
+        $allowi = $allow ? '1' : '0';
+        $this->query(
+            "INSERT INTO acl_permissions(aros_id, controller, permission)
+             VALUE('$aroID', '$alias', '$allowi')"
+        );
+
+        if ($allow) {
+            $acl->allow(array('model' => 'Group', 'foreign_key' => $groupID), $alias);
+        } else {
+            $acl->deny(array('model' => 'Group', 'foreign_key' => $groupID), $alias);
+        }
+    }
+
+    /**
+     * Set privileges.
+     */
+    public function setGroupPermissions($acl, $groupID, $privileges) {
+        foreach ($privileges as $acoID => $value) {
+            if ($value == true) {
+                $this->setGroupPermission($acl, $groupID, $acoID, true);
+            }
+        }
     }
 }
 

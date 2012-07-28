@@ -28,7 +28,7 @@ CREATE TABLE `acl_permissions` (
   `controller` varchar(100) NOT NULL,
   `permission` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `aros_permission` (`aros_id`,`permission`)
+  UNIQUE KEY `aros_permission` (`aros_id`,`controller`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 

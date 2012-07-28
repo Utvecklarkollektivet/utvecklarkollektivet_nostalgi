@@ -6,10 +6,6 @@
 </div>
 <div class="clear"></div>
 
-<h3 class="grid_12">Rättigheter</h3>
-<div class="grid_12">@todo! Hämta data från acos, aros samt aros_acos</div>
-<div class="clear"></div>
-
 <h3 class="grid_12">Medlemmar</h3>
 <div class="clear"></div>
 

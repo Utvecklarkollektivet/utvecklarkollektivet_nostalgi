@@ -15,7 +15,7 @@ Kodstil VIKTIGT!
 ================
 Vi använder CakePHP's kodstil. [Läs här](http://book.cakephp.org/2.0/en/contributing/cakephp-coding-conventions.html)
 
-Inga tabbar - 4 mellanslag
+
 --------------------------
 Observera att CakePHP inte använder tab-tecken. Därför måste du ställa in din editor på att använda 4 mellanslag.
 

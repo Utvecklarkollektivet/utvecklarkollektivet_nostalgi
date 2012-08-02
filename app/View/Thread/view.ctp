@@ -9,13 +9,13 @@ Skriv ut thread här..
 <br />
 <h2>Svar</h2>
 <?php foreach($posts as $post): ?>
-     <?php echo $post['user']['username']; ?>, <?php echo $post['post']['content']; ?>, <em><?php echo $this->Time->format('F jS, Y H:i', $post['post']['created']); ?></em>
-    <hr />
+	 <?php echo $post['user']['username']; ?>, <?php echo $post['post']['content']; ?>, <em><?php echo $this->Time->format('F jS, Y H:i', $post['post']['created']); ?></em>
+	<hr />
 	
 <?php endforeach; ?>
 <h2>Svara</h2>
 <?php
-    echo $this->Form->create('Post', array('action' => 'add/' . $thread['Thread']['id']));
-    echo $this->Form->input('content', array('rows' => '3'));
-    echo $this->Form->end('Save Post');
+	echo $this->Form->create('Post', array('action' => 'add/' . $thread['Thread']['id']));
+	echo $this->Form->input('content', array('rows' => '3'));
+	echo $this->Form->end('Save Post');
 ?>

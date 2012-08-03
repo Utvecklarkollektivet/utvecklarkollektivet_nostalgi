@@ -17,26 +17,25 @@ Vi använder CakePHP's kodstil. [Läs här](http://book.cakephp.org/2.0/en/contr
 
 
 --------------------------
-Observera att CakePHP inte använder tab-tecken. Därför måste du ställa in din editor på att använda 4 mellanslag.
+Observera att CakePHP använder tab-tecken.
 
 Ställ om tabbar i dreamweaver
 -----------------------------
-Gå till Edit > Preferences. Välj "Code Format" i menyn till vänster. Ställ in "Tab width" till "4" och välj "Spaces" i select-menyn.
+Gå till Edit > Preferences. Välj "Code Format" i menyn till vänster. Välj "Tab" i select-menyn.
 
 Ställ om tabbar i vim
 ---------------------
 Skriv
-    :set expandtabs 
-och 
-    :set tabstop=4
-Om du vill göra om alla befintliga tabbar till spaces, skriv
-    :retab
+    :set noexpandtabs 
+    
+Om du vill göra om alla befintliga tabbar till tab-tecken, skriv
+    :set noet|retab!
 
 Ställ om tabbar i Notepad++
 ---------------------------
 Inställningar > Inställningar > Programspråksmeny
 
-I nedre höger kant finns det en checkbox "Ersätt med mellanslag", kryssa i den. Ovanför kan du också välja "Flikstorlek" (hur många mellanslag på en tab), välj 4.
+I nedre höger kant finns det en checkbox "Ersätt med mellanslag", kryssa ur den. Ovanför kan du också välja "Flikstorlek" (hur många mellanslag på en tab).
 
 Ställ om tabbar i Sublime Text 2
 ---------------------------
@@ -48,4 +47,4 @@ Denna är som standard 4 så det behöver man nog inte ändra på, men se till a
 
 Denna är som standard satt till false så ändra den till true.
 // Set to true to insert spaces when tab is pressed
-"translate_tabs_to_spaces": true,
+"translate_tabs_to_spaces": false,

@@ -28,7 +28,7 @@ class ForumsController extends AppController {
                 $this->Session->setFlash('Din tråd har sparats.');
                 $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash('Kunde spara tråden.');
+                $this->Session->setFlash('Kunde inte spara tråden.');
             }
         }
 	}

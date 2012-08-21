@@ -12,7 +12,6 @@
 		echo $this->Html->css('text');
 		echo $this->Html->css('960');
 		echo $this->Html->css('generic');
-		echo $this->Html->css('login');
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
@@ -20,8 +19,6 @@
 	?>
 </head>
 <body>
-<div id="topborder"></div>
-
 	<!-- Since the container is only 640px wide, it contains only 8 grids! -->
 	<div class="container_12 login_container">
 		<div class="grid_8">

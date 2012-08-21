@@ -19,16 +19,8 @@
 	?>
 </head>
 <body>
-	<!-- Since the container is only 640px wide, it contains only 8 grids! -->
-	<div class="container_12 login_container">
-		<div class="grid_8">
-			<h1>Välkommen till forum-utvecklarkollektivet</h1>
-			<h6>Detta är ett stängt community, det innebär att enbart medlemmar har tillgång till innehållet på websidan.</h6>
-		</div>
-
-		<?php echo $this->fetch('content'); ?>
-		<div class="clear"></div>
-	</div>
+	
+	<?php echo $this->fetch('content'); ?>
 
 	<div id="footer">
 		© Copyright, 2012 <a href="#">forum-utvecklarkollektivet</a><br />

@@ -7,3 +7,6 @@ app/.DS_Store
 app/webroot/.DS_Store
 lib/.DS_Store
 plugins/.DS_Store
+.DS_Store
+
+app/.DS_Store

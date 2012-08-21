@@ -1,3 +1,10 @@
+<!-- Since the container is only 640px wide, it contains only 8 grids! -->
+<div class="container_12 login_container">
+	<div class="grid_8">
+		<h1>Välkommen till forum-utvecklarkollektivet</h1>
+		<h6>Detta är ett stängt community, det innebär att enbart medlemmar har tillgång till innehållet på websidan.</h6>
+	</div>
+
 <?php
 echo $this->Form->create(
 	'User', 
@@ -64,3 +71,5 @@ if (!empty($validationErrors)) {
 <div class="grid_6 prefix_1 suffix_1" style="font-size: 10px; color: #666666; text-align: center; padding-top: 20px;">
 	Har du en registreringsnyckel? <a href="/users/add/">Registrera dig här</a>.
 </div>
+<div class="clear"></div>
+</div> <!-- end .login_container -->

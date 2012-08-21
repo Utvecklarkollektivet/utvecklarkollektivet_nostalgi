@@ -8,9 +8,9 @@
 	<?php
 		echo $this->Html->meta('icon');
 
-		echo $this->Html->css('clear');
+		echo $this->Html->css('reset');
 		echo $this->Html->css('text');
-		echo $this->Html->css('960');
+		echo $this->Html->css('bootstrap');
 		echo $this->Html->css('generic');
 
 		echo $this->fetch('meta');
@@ -19,13 +19,6 @@
 	?>
 </head>
 <body>
-	
-	<?php echo $this->fetch('content'); ?>
-
-	<div id="footer">
-		© Copyright, 2012 <a href="#">forum-utvecklarkollektivet</a><br />
-		OBS, denna sidan använder cookies. För att veta mer om cookies tryck
-		<a href="#">här</a>
-	</div>
+		<?php echo $this->fetch('content'); ?>
 </body>
 </html>

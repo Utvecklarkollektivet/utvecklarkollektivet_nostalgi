@@ -10,7 +10,7 @@
 
 		echo $this->Html->css('reset');
 		echo $this->Html->css('text');
-		echo $this->Html->css('960');
+		echo $this->Html->css('bootstrap');
 		echo $this->Html->css('generic');
 
 		echo $this->Html->script('jquery-1.7.2');
@@ -38,5 +38,6 @@
 		OBS, denna sidan använder cookies. För att veta mer om cookies tryck
 	<a href="#">här</a>
 </div>
+</div><!-- end .login_container -->
 </body>
 </html>

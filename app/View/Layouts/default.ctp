@@ -22,22 +22,34 @@
 	?>
 </head>
 <body>
-<div id="topborder"></div>
+	<div id="header_container">
+		<div id="header_content">
+			<div class="header_logo"></div>
+			<h4 class="main_header_text">Utvecklarkollektivet</h4>
+			<div class="mainmenu">
+				<?php echo $this->Menu->generate($menu); ?>
+			</div>
+			<div class="clearfix"></div>
+			<div class="darkstroke"></div>
+			<div class="lightstroke"></div>
+			<!-- Menyn behöver fixas -->
+			<div class="auth_menu">
+				<ul>
+					<li><a href="#">Profil</a></li>
+					<li><a href="#">Inställningar</a></li>
+					<li><a href="users/logout">Logga ut</a></li>
+				</ul>
+			</div>
+		</div>
+	</div> <!-- End of #HeaderContainer -->
 
-<div id="menu" class="container_12">
-	<?php echo $this->Menu->generate($menu); ?>
-</div>
-
-<div id="container" class="container_12">
-	<?php echo $this->fetch('content'); ?>
-	<div class="clear"></div>
-</div>
-<div>
-	<div id="footer">
-		© Copyright, 2012 <a href="#">forum-utvecklarkollektivet</a><br />
-		OBS, denna sidan använder cookies. För att veta mer om cookies tryck
-	<a href="#">här</a>
-</div>
-</div><!-- end .login_container -->
+		<div id="container">
+			<?php echo $this->fetch('content'); ?>
+		</div>
+		<div id="footer">
+			© Copyright, 2012 <a href="#">forum-utvecklarkollektivet</a><br />
+			OBS, denna sidan använder cookies. För att veta mer om cookies tryck
+		<a href="#">här</a>
+		</div>
 </body>
 </html>

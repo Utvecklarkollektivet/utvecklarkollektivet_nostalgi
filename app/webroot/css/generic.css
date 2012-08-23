@@ -30,7 +30,7 @@ body {
   padding: 10px;
   margin: 30px auto 0;
   border-radius: 3px;
-  box-shadow: 0 1px 5px rgba(0,0,0,.2);
+  box-shadow: 0 0 10px rgba(0,0,0,.2);
 }
 
 #footer {
@@ -46,18 +46,6 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0;
   margin: 10px 0 4px;
   font-weight: normal; }
-
-a:link,
-a:visited,
-a:hover,
-a:active {
-  color: #1d7ebf; }
-
-a:link {
-  text-decoration: underline; }
-
-a:hover {
-  text-decoration: none; }
 
 p.bold {
   font-weight: bold;
@@ -87,15 +75,19 @@ p.small {
       margin: 35px auto 0;
     }
 
-    .auth_header_text {
-      font-size: 50px;
-      margin-top: 20px;
+    h4.auth_header_text,
+    h4.main_header_text {
       letter-spacing: -0.05em;
+      color: #f6f6f6;
     }
 
-    .main_header_text {
+    h4.auth_header_text {
+      font-size: 50px;
+      margin-top: 20px;
+    }
+
+    h4.main_header_text {
       font-size: 60px;
-      letter-spacing: -0.05em;
       line-height: 65px;
       float: left;
       clear: none;
@@ -117,16 +109,47 @@ p.small {
 
 .mainmenu {
   height: 65px;
+  width: 400px;
   float: right;
 }
 
 .mainmenu ul {
-  float: left;
+  display: inline;
+  position: relative;
 }
 
-.mainmenu ul li{
+.mainmenu ul li {
+  float: left;
+  margin: 0 10px;
   display: inline-block;
   padding-top: 48px;
+  position: relative;
+}
+
+.mainmenu ul li ul {
+  display: none;
+  position: absolute;
+  left: -20px;
+  top: 70px;
+  background: url('/img/darkbg.jpg');
+  border-radius: 0 0 1em 1em;
+  z-index: 3;
+}
+
+.mainmenu > ul > li:hover > ul {
+  display: inline;
+}
+
+.mainmenu ul li ul li{
+  padding: 5px 8px;
+  margin: 0;
+}
+
+.mainmenu ul li ul li a,
+.mainmenu ul li ul li a:link,
+.mainmenu ul li ul li a:visited {
+  font-size: 14px;
+  font-weight: normal;
 }
 
 .mainmenu ul li a,
@@ -178,6 +201,18 @@ p.small {
 /* =============================================================================
     Help classes
     ========================================================================== */
+
+    h3.box_fix_top {
+      margin: 0;
+    }
+
+    .fix_top_box {
+      margin: 2em 0;
+    }
+
+    .max_table_width {
+      max-width: 180px;
+    }
 
 /* ============================================ End of Help classes */
 
@@ -236,47 +271,19 @@ input[type="password"]{
 
 /* ============================================ End of Login */
 
-/* Input Fields
-============================================ */
+/* =============================================================================
+    Input Fields
+    ========================================================================== */
 
-select {
-  padding-top: 10px !important;
-  padding-bottom: 10px !important;
-  padding-right: 10px !important;
-  padding-left: 10px;
-  border: #bfbfbf solid thin;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  -khtml-border-radius: 4px;
-  border-radius: 4px;
-  margin-bottom: 5px;
-  font-size: 1em;
-  letter-spacing: 0.1em;
-  width: 222px !important; }
-  select:hover, select:focus {
-    box-shadow: 0 0 10px rgba(50, 50, 50, 0.2); }
 
-textarea {
-  padding-top: 10px !important;
-  padding-bottom: 10px !important;
-  padding-right: 10px !important;
-  padding-left: 10px;
-  border: #bfbfbf solid thin;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  -khtml-border-radius: 4px;
-  border-radius: 4px;
-  margin-bottom: 5px;
-  font-size: 1em;
-  letter-spacing: 0.1em;
-  min-width: 275px;
-  max-width: 275px; }
-  textarea:hover, textarea:focus {
-    box-shadow: 0 0 10px rgba(50, 50, 50, 0.2); }
 
-/* ============================================ End of Buttons */
-  /* Register Keys Form
-  ============================================ */
+/* ============================================ End Input Fields */
+
+
+/* =============================================================================
+    Register Keys Form
+    ========================================================================== */
+
   .registerKeys label {
     display: block; }
 
@@ -290,7 +297,7 @@ textarea {
   .actions li a {
     color: #222; }
 
-  /* ============================================ end Register Keys Form */
+  /* ============================================ End Register Keys Form */
 
 /* ============================================ End of Input Fields */
 
@@ -314,17 +321,95 @@ textarea {
 
 /* ============================================ End of Custom Messages*/
 
-/* Users
-============================================ */
-.users dt {
-  font-weight: bold; }
 
-.users dd {
-  margin-left: 15px;
-  font-size: 0.9em;
-  font-style: italic; }
+/* =============================================================================
+    Users
+    ========================================================================== */
+
+    .users dt {
+      font-weight: bold; 
+    }
+
+    .users dd {
+      margin-left: 15px;
+      font-size: 0.9em;
+      font-style: italic; 
+    }
 
 /* ============================================ End of Users */
+
+/* =============================================================================
+    Groups
+    ========================================================================== */
+
+    p.group_info {
+      position: relative;
+      color: #888;
+      top: -8px;
+    }
+
+    .group_list > ul {
+      margin: 0;
+    }
+
+    .group_list ul li {
+      line-height: 20px;
+      margin: 5px 0;
+    }
+
+    .group_list ul li:first-child {
+      margin: -5px 0 5px 0;
+    }
+
+    .group_list ul li:last-child {
+      margin: 5px 0 15px 0;
+    }
+
+    .group_list ul li p {
+      display: inline;
+    }
+
+    .group_list input[type="checkbox"] {
+      margin-right: 2px;
+    }
+
+/* ============================================ End of Groups */
+
+/* =============================================================================
+    Forum
+    ========================================================================== */
+
+    .forum_category {
+      margin: -10px;
+      padding: 5px 15px;
+      height: 30px;
+      line-height: 30px;
+      background: url('/img/forum_category_bg.png') repeat-x;
+      position: relative;
+    }
+
+    .forum_category a,
+    .forum_category a:link,
+    .forum_category a:visited {
+      color: #f6f6f6;
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: bold;
+      letter-spacing: -0.02em;
+    }
+
+    .forum_category_logo {
+      position: absolute;
+      width: 271px;
+      height: 40px;
+      background: url('/img/forum_category_logo.png');
+      right: 40px;
+      top: 0;
+    }
+
+/* ============================================ End of Groups */
+
+
 
 /* ClearFix
 ============================================ */

@@ -45,6 +45,7 @@
 
 		<div id="container">
 			<?php echo $this->fetch('content'); ?>
+			<div class="clearfix"></div>
 		</div>
 		<div id="footer">
 			© Copyright, 2012 <a href="#">forum-utvecklarkollektivet</a><br />

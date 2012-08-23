@@ -1,6 +1,8 @@
-<h1 class="grid_12">Start</h1>
-<div class="clear"></div>
+<h1>Start</h1>
+<div class="clearfix"></div>
 
-<div class="grid_12">
-	Startsida! Alla inloggade har access hit, oavsett privilegier.
+<div class="row">
+	<div class="span6">
+		Startsida! Alla inloggade har access hit, oavsett privilegier.
+	</div>
 </div>

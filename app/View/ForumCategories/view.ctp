@@ -9,7 +9,7 @@
 <?php foreach($forumCategories['ChildForumCategories'] as $c): ?>
 	<?php echo $this->Html->link($c['name'], array('controller' => 'forum_categories', 'action' => 'view', $c['id'])); ?><br />
 <?php endforeach; ?>
-<?php echo $this->Html->link('Skriv ny tråd', array('controller' => 'thread', 'action' => 'write')); ?>
+<?php echo $this->Html->link('Skriv ny tråd', array('controller' => 'thread', 'action' => 'write', $forumCategories['ForumCategory']['id'])); ?>
 <h3>Trådar i denna kategori:</h3>
 <?php foreach($forumCategories['Thread'] as $t): ?>
 	<?php echo $this->Html->link($t['id'], array('controller' => 'thread', 'action' => 'view', $t['id'])); ?>, <?php echo $t['topic']; ?>

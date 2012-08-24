@@ -1,4 +1,4 @@
-<h1>Threads</h1>
+<h1>Threads, DENNA SKALL EJ ANVÄNDAS, TA BORT?</h1>
 
 <?php echo $this->Html->link('Skriv ny tråd', array('controller' => 'thread', 'action' => 'write')); ?>
 <br />

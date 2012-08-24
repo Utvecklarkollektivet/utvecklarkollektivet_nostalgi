@@ -46,7 +46,7 @@ class ThreadController extends AppController {
 	/**
 	 * New post
 	 */
-	public function write() {
+	public function write($forumCategoryId = NULL) {
 		if ($this->request->is('post')) {
 			$this->Thread->set('user_id', $this->Auth->user('id'));
 			if ($this->Thread->save($this->request->data)) {
@@ -55,6 +55,8 @@ class ThreadController extends AppController {
 			} else {
 				$this->Session->setFlash('Unable to add your post.');
 			}
+		} else {
+			$this->set('forumCategoryId', $forumCategoryId);
 		}
 	}
 }

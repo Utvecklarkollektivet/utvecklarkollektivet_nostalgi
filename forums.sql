@@ -1,53 +1,103 @@
-# ************************************************************
-# Sequel Pro SQL dump
-# Version 3408
-#
-# http://www.sequelpro.com/
-# http://code.google.com/p/sequel-pro/
-#
-# Host: 127.0.0.1 (MySQL 5.5.9)
-# Database: utvecklarkollektivet
-# Generation Time: 2012-08-06 00:17:29 +0000
-# ************************************************************
+-- phpMyAdmin SQL Dump
+-- version 3.4.10.1
+-- http://www.phpmyadmin.net
+--
+-- Värd: localhost
+-- Skapad: 24 aug 2012 kl 17:38
+-- Serverversion: 5.1.53
+-- PHP-version: 5.3.4
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+--
+-- Databas: `utvecklarkollektivet`
+--
 
-# Dump of table forums
-# ------------------------------------------------------------
+-- --------------------------------------------------------
+
+--
+-- Tabellstruktur `forums`
+--
 
 DROP TABLE IF EXISTS `forums`;
-
-CREATE TABLE `forums` (
+CREATE TABLE IF NOT EXISTS `forums` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(60) NOT NULL,
   `description` varchar(255) NOT NULL,
+  `hidden` tinyint(4) NOT NULL,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `modified` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
-LOCK TABLES `forums` WRITE;
-/*!40000 ALTER TABLE `forums` DISABLE KEYS */;
+-- --------------------------------------------------------
 
-INSERT INTO `forums` (`id`, `name`, `description`)
-VALUES
-	(1,'Utvecklarkollektivet','Här skriver vi om Utvecklarkollektivet.');
+--
+-- Tabellstruktur `forum_categories`
+--
 
-/*!40000 ALTER TABLE `forums` ENABLE KEYS */;
-UNLOCK TABLES;
+DROP TABLE IF EXISTS `forum_categories`;
+CREATE TABLE IF NOT EXISTS `forum_categories` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `description` text NOT NULL,
+  `hidden` tinyint(4) NOT NULL,
+  `forum_id` int(11) NOT NULL,
+  `forum_category_id` int(11) DEFAULT NULL,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `modified` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
+-- --------------------------------------------------------
 
+--
+-- Tabellstruktur `posts`
+--
 
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+DROP TABLE IF EXISTS `posts`;
+CREATE TABLE IF NOT EXISTS `posts` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `thread_id` int(11) NOT NULL,
+  `content` text NOT NULL,
+  `hidden` tinyint(4) NOT NULL,
+  `created` datetime DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  KEY `thread_id` (`thread_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellstruktur `threads`
+--
+
+DROP TABLE IF EXISTS `threads`;
+CREATE TABLE IF NOT EXISTS `threads` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL,
+  `topic` varchar(30) NOT NULL,
+  `content` text NOT NULL,
+  `locked` tinyint(4) NOT NULL,
+  `hidden` tinyint(4) NOT NULL,
+  `forum_category_id` int(11) NOT NULL,
+  `created` datetime DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

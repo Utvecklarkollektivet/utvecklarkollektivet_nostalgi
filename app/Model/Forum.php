@@ -8,7 +8,7 @@ App::uses('AppModel', 'Model');
 class Forum extends AppModel {
 	
 	public $name = 'Forum';
-    //public $hasMany = 'threads';
+    public $hasMany = 'ForumCategory';
 
     public $validate = array(
             'name' => array(

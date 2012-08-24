@@ -10,10 +10,24 @@ class ForumsController extends AppController {
 
 	public $helpers = array('Html', 'Form');
 
+	public function beforeFilter() {
+		parent::beforeFilter();
+		$this->Auth->allow('*');
+	}
+	/**
+	 * Lists all forums
+	 *
+	*/
 	public function index() {
 		$this->set('forums', $this->Forum->find('all'));
+		// Måste lägga till en koll att forum_category_id = NULL..
+		print_r($this->Forum->find('all'));
 	}
-
+	
+	/**
+	 * Shows only one forum
+	 *
+	 */
 	public function category() {
 		$this->loadModel('Thread');
 		$this->set('threads', $this->Thread->findAllByForumsId($this->params['pass'][0], array(),  array('Thread.created' => 'desc')));

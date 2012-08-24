@@ -7,7 +7,7 @@ class Thread extends AppModel {
 
     public $name = 'Thread';
     public $hasMany = 'post';
-    public $belongsTo = 'user';
+    public $belongsTo = array('user', 'ForumCategory');
 
     /*
     Blir något fel här som jag inte har tid att kika på nu

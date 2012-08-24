@@ -9,7 +9,9 @@ App::uses('AppController', 'Controller');
 class ForumsController extends AppController {
 
 	public $helpers = array('Html', 'Form');
-
+	/**
+	 * Temporary to allow all users all functions.
+	 */
 	public function beforeFilter() {
 		parent::beforeFilter();
 		$this->Auth->allow('*');
@@ -19,6 +21,7 @@ class ForumsController extends AppController {
 	 *
 	*/
 	public function index() {
+		
 		$this->set('forums', $this->Forum->find('all'));
 		// Måste lägga till en koll att forum_category_id = NULL..
 		print_r($this->Forum->find('all'));
@@ -32,7 +35,10 @@ class ForumsController extends AppController {
 		$this->loadModel('Thread');
 		$this->set('threads', $this->Thread->findAllByForumsId($this->params['pass'][0], array(),  array('Thread.created' => 'desc')));
 	}
-
+	/**
+	 * Write a thread, not currently in use (ThreadController handles this)
+	 *
+	 */
 	public function write() {
 		$this->loadModel('Thread');
 		if ($this->request->is('post')) {
@@ -59,18 +65,17 @@ class ForumsController extends AppController {
 	}
 
     
-    
+    /**
+	 * Add a new forum
+	 *
+	 */
     public function add($threadID = NULL) {
-    	$this->loadModel('Thread');
-		$this->loadModel('Post');
         if ($this->request->is('post')) {
-            $this->Post->set('thread_id', $threadID);
-            $this->Post->set('user_id', $this->Auth->user('id'));
-            if ($this->Post->save($this->request->data)) {
-                $this->Session->setFlash('Your post has been saved.');
+            if ($this->Forum->save($this->request->data)) {
+                $this->Session->setFlash('Your forum has been saved.');
                 $this->redirect($this->referer());
             } else {
-                $this->Session->setFlash('Unable to add your post.');
+                $this->Session->setFlash('Unable to add your forum.');
             }
         }
     }

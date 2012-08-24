@@ -15,8 +15,8 @@ class ForumCategoriesController extends AppController {
 	
 	public function view($id = NULL) {
 		$this->set('forumCategories', $this->ForumCategory->findById($id));
-		echo "###";
-		print_r($this->ForumCategory->findById($id));
+		//echo "###";
+		//print_r($this->ForumCategory->findById($id));
 	}
 	
 	public function add() {

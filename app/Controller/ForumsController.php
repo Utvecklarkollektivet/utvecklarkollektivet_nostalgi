@@ -23,8 +23,7 @@ class ForumsController extends AppController {
 	public function index() {
 		
 		$this->set('forums', $this->Forum->find('all'));
-		// Måste lägga till en koll att forum_category_id = NULL..
-		print_r($this->Forum->find('all'));
+		//print_r($this->Forum->find('all'));
 	}
 	
 	/**

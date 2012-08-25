@@ -9,7 +9,6 @@
 		echo $this->Html->meta('icon');
 
 		echo $this->Html->css('reset');
-		echo $this->Html->css('text');
 		echo $this->Html->css('bootstrap');
 		echo $this->Html->css('generic');
 

@@ -60,13 +60,58 @@ class ForumCategoriesController extends AppController {
 			$this->set('select_categories', $select_categories);
 		}
 	}
-	
-	public function edit($id = NULL) {
-	
+	/**
+	 * Edit a forum category
+	 *
+	 */
+	public function edit($id = null) {
+		$this->ForumCategory->id = $id;
+		if (!$this->ForumCategory->exists()) {
+			throw new NotFoundException(__('Invalid forum category'));
+		}
+		if ($this->request->is('post') || $this->request->is('put')) {
+			if ($this->ForumCategory->save($this->request->data)) {
+				$this->Session->setFlash(__('The forum category has been saved'));
+				$this->redirect(array('action' => 'index'));
+			} else {
+				$this->Session->setFlash(__('The forum category could not be saved. Please, try again.'));
+			}
+		} else {
+			$this->loadModel('Forum');
+			
+			$this->ForumCategory->recursive = 0;
+			$this->request->data = $this->ForumCategory->read(
+				array(
+					'ForumCategory.forum_id', 
+					'ForumCategory.forum_category_id', 
+					'ForumCategory.name',
+					'ForumCategory.hidden',
+				), 
+				$id
+			);
+			
+			$forums = $this->Forum->find('list');
+			$categories = $this->ForumCategory->find('list');
+			
+			$this->set('forums', $forums);
+			$this->set('categories', $categories);
+			$this->set('selectedForum', $this->ForumCategory->data['ForumCategory']['forum_id']);
+			$this->set('selectedForumCategory', $this->ForumCategory->data['ForumCategory']['forum_category_id']);
+		}
 	}
 	
-	public function delete($id = NULL) {
-	
+	public function delete($id = null) {
+		
+		$this->ForumCategory->id = $id;
+		if (!$this->ForumCategory->exists()) {
+			throw new NotFoundException(__('Invalid forum category'));
+		}
+		if ($this->ForumCategory->delete()) {
+			$this->Session->setFlash(__('Forum category deleted'));
+			$this->redirect(array('action' => 'index'));
+		}
+		$this->Session->setFlash(__('Forum category was not deleted'));
+		$this->redirect(array('action' => 'index'));
 	}
 
 

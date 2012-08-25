@@ -12,6 +12,7 @@ echo $this->Form->input('forum_category_id', array(
 	'empty' => 'Choose category'
 )); 
 echo $this->Form->input('name');
+echo $this->Form->input('hidden');
 
 echo $this->Form->end('Save category');
 ?>

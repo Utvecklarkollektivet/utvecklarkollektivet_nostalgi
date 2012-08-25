@@ -454,6 +454,10 @@ input[type="password"]{
               transform: scale(2);
     }
 
+    .forum_sub_category_field_right {
+      text-align: right;
+    }
+
     .forum_thread_header, .forum_topic {
       margin: 20px -9px 0;
       border-radius: 3px;

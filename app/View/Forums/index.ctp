@@ -14,11 +14,13 @@
 						<?php echo $this->Html->link($c['name'], array('controller' => 'forum_categories', 'action' => 'view', $c['id'])); ?>
 						<p class="small">Här finns kategorins beskrivning</p>
 					</div>
-					<div class="span2">
-						<p>Antal poster</p>
+					<div class="span2 forum_sub_category_field_right">
+						<p>X poster</p>
+						<p class="small">X Trådar</p>
 					</div>
 					<div class="span2">
-						<p>Senaste post</p>
+						<p>Senaste post av (X)</p>
+						<p>I (TRÅD X)</p>
 					</div>
 					<div class="span0_5">
 					<?php if ($acl->check(array('User' => $user), 'controllers/ForumCategories/edit')): ?>

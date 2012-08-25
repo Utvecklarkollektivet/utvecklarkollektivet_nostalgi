@@ -13,11 +13,13 @@
 
 <?php echo $this->Html->link('Skapa ny tråd', array('controller' => 'thread', 'action' => 'write', $forumCategories['ForumCategory']['id']),array('class' => 'btn')); ?>
 
-<div class="forum_thread_header">
-	<h3>Trådar</h3>
-</div>
-<?php foreach($forumCategories['Thread'] as $t): ?>
-	<div class="forum_thread">
-		<?php echo $this->Html->link($t['topic'], array('controller' => 'thread', 'action' => 'view', $t['id'])); ?>
+<?php if (count($forumCategories['Thread']) > 0): ?>
+	<div class="forum_thread_header">
+		<h3>Trådar</h3>
 	</div>
-<?php endforeach; ?>
+	<?php foreach($forumCategories['Thread'] as $t): ?>
+		<div class="forum_thread">
+			<?php echo $this->Html->link($t['topic'], array('controller' => 'thread', 'action' => 'view', $t['id'])); ?>
+		</div>
+	<?php endforeach; ?>
+<?php endif; ?>

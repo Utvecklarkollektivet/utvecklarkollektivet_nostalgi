@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Värd: localhost
--- Skapad: 24 aug 2012 kl 17:38
+-- Skapad: 25 aug 2012 kl 10:26
 -- Serverversion: 5.1.53
 -- PHP-version: 5.3.4
 
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `forums` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(60) NOT NULL,
   `description` varchar(255) NOT NULL,
-  `hidden` tinyint(4) NOT NULL,
+  `hidden` tinyint(1) NOT NULL,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `modified` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
@@ -49,13 +49,13 @@ CREATE TABLE IF NOT EXISTS `forum_categories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `description` text NOT NULL,
-  `hidden` tinyint(4) NOT NULL,
+  `hidden` tinyint(1) NOT NULL,
   `forum_id` int(11) NOT NULL,
   `forum_category_id` int(11) DEFAULT NULL,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `modified` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 -- --------------------------------------------------------
 
@@ -69,13 +69,13 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `user_id` int(11) NOT NULL,
   `thread_id` int(11) NOT NULL,
   `content` text NOT NULL,
-  `hidden` tinyint(4) NOT NULL,
+  `hidden` tinyint(1) NOT NULL,
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   KEY `thread_id` (`thread_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 -- --------------------------------------------------------
 
@@ -89,14 +89,14 @@ CREATE TABLE IF NOT EXISTS `threads` (
   `user_id` int(11) DEFAULT NULL,
   `topic` varchar(30) NOT NULL,
   `content` text NOT NULL,
-  `locked` tinyint(4) NOT NULL,
-  `hidden` tinyint(4) NOT NULL,
+  `locked` tinyint(1) NOT NULL,
+  `hidden` tinyint(1) NOT NULL,
   `forum_category_id` int(11) NOT NULL,
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -220,6 +220,14 @@ p.small {
       min-width: 400px;
     }
 
+    .hiddentext {
+      text-indent: -9999px;
+    }
+
+    .bordered {
+      border: 1px solid #000;
+    }
+
 /* ============================================ End of Help classes */
 
 /* =============================================================================
@@ -385,12 +393,18 @@ input[type="password"]{
     Forum
     ========================================================================== */
 
+    .forum_button {
+      position: absolute;
+      bottom: 10px;
+    }
+
     .forum_category, .forum_thread_header, .forum_topic {
       padding: 5px 15px;
       height: 30px;
       line-height: 30px;
       background: url('/img/forum_category_bg.png') repeat-x;
       position: relative;
+      margin-bottom: 10px;
     }
 
     .forum_category h3,
@@ -419,17 +433,25 @@ input[type="password"]{
     }
 
     .forum_sub_category {
-      height: 80px;
-      line-height: 80px;
-      border-bottom: 1px solid #ccc;
-      margin: 0;
-      padding: 0 10px;
+      height: 60px;
+      padding: 0;
+      max-width: 960px !important;
+      margin-left: 20px;
     }
 
     .forum_sub_category a,
     .forum_sub_category a:link,
     .forum_sub_category a:visited {
       font-size: 24px;
+    }
+
+    .forum_sub_category_icon {
+      margin: 10px 0 0 10px;
+      -webkit-transform: scale(2);
+         -moz-transform: scale(2);
+          -ms-transform: scale(2);
+           -o-transform: scale(2);
+              transform: scale(2);
     }
 
     .forum_thread_header, .forum_topic {
@@ -462,7 +484,11 @@ input[type="password"]{
     }
 
     .thread_info {
-      margin-bottom: -20px;
+      margin-bottom: -10px;
+    }
+
+    .lightgreybg {
+      background-color: #efefef;
     }
 
 /* ============================================ End of Groups */

@@ -38,7 +38,12 @@ class ThreadController extends AppController {
 		// We don't want to join everything since we get the posts alone
 		$this->Thread->recursive = 1; 
 		$this->set('thread', $this->Thread->read());
-		$this->set('posts', $this->Post->findAllByThreadId($id));
+		$this->set('posts', $this->Post->find('all', array(
+			'conditions' => array(
+				'Post.thread_id' => $id,
+				'Post.hidden' => 0
+			)
+		)));
 	   
 		
 	}

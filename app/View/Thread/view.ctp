@@ -4,12 +4,12 @@ Skriv ut thread här..
 <h2><?php echo $thread['Thread']['topic']; ?></h2>
 <p><?php echo $thread['Thread']['content']; ?></p>
 <p><em><?php echo $this->Time->format('F jS, Y H:i', $thread['Thread']['created']); ?></em></p>
-<p>Skriven av: <?php echo $thread['user']['username']; ?>
+<p>Skriven av: <?php echo $thread['User']['username']; ?>
 
 <br />
 <h2>Svar</h2>
 <?php foreach($posts as $post): ?>
-	 <?php echo $post['user']['username']; ?>, <?php echo $post['post']['content']; ?>, <em><?php echo $this->Time->format('F jS, Y H:i', $post['post']['created']); ?></em>
+	 <?php echo $post['User']['username']; ?>, <?php echo $post['Post']['content']; ?>, <em><?php echo $this->Time->format('F jS, Y H:i', $post['Post']['created']); ?></em>
 	<hr />
 	
 <?php endforeach; ?>

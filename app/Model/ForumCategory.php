@@ -8,7 +8,11 @@ class ForumCategory extends AppModel {
 	public $useTable = 'forum_categories';
 	
     public $hasMany = array(
-		'Thread', 
+		'Thread' => array(
+			'conditions' => array(
+				'Thread.hidden' => 0
+			)
+		), 
 		'ChildForumCategories' => array(
 			'className' => 'ForumCategory',
 			'foreignKey' => 'forum_category_id'

@@ -11,9 +11,11 @@ class Forum extends AppModel {
     //public $hasMany = 'ForumCategory'; /*array(
     public $hasMany = array(
 		'ForumCategory' => array(
-			'conditions' => array('ForumCategory.forum_category_id' => null)
+			'conditions' => array(
+				'ForumCategory.forum_category_id' => null,
+				'ForumCategory.hidden' => 0
+			)
 		)
-		
 	);
 
     public $validate = array(

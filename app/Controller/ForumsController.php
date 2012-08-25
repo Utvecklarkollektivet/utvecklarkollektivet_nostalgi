@@ -22,7 +22,11 @@ class ForumsController extends AppController {
 	*/
 	public function index() {
 		
-		$this->set('forums', $this->Forum->find('all'));
+		$this->set('forums', $this->Forum->find('all', array(
+			'conditions' => array(
+				'Forum.hidden' => 0
+			)
+		)));
 		//print_r($this->Forum->find('all'));
 	}
 	

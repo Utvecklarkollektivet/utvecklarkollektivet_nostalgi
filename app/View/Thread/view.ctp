@@ -1,21 +1,44 @@
-<h1>Read single thread</h1>
-Skriv ut thread här..
+<div class="forum_topic"><h3><?php echo $thread['Thread']['topic']; ?></h3></div>
 
-<h2><?php echo $thread['Thread']['topic']; ?></h2>
-<p><?php echo $thread['Thread']['content']; ?></p>
-<p><em><?php echo $this->Time->format('F jS, Y H:i', $thread['Thread']['created']); ?></em></p>
-<p>Skriven av: <?php echo $thread['User']['username']; ?>
+<div class="row">
+	<div class="span6">
+		<div class="row">
+		<p class="span6"><?php echo $thread['Thread']['content']; ?></p>
+		</div>
+		<div class="row thread_info">
+			<p class="small span3"><em><?php echo $this->Time->format('F jS, Y H:i', $thread['Thread']['created']); ?></em></p>
+			<p class="small span3">Skriven av: <?php echo $thread['User']['username']; ?>
+		</div>
 
-<br />
-<h2>Svar</h2>
-<?php foreach($posts as $post): ?>
-	 <?php echo $post['User']['username']; ?>, <?php echo $post['Post']['content']; ?>, <em><?php echo $this->Time->format('F jS, Y H:i', $post['Post']['created']); ?></em>
-	<hr />
-	
-<?php endforeach; ?>
-<h2>Svara</h2>
-<?php
-	echo $this->Form->create('Post', array('action' => 'add/' . $thread['Thread']['id']));
-	echo $this->Form->input('content', array('rows' => '3'));
-	echo $this->Form->end('Save Post');
-?>
+		<hr />
+
+		<?php foreach($posts as $post): ?>
+			<div class="row">
+			<p class="span6"><?php echo $post['Post']['content']; ?></p>
+			</div>
+			<div class="row thread_info">
+				<p class="small span3">
+					<em>
+					<?php echo $this->Time->format('F jS, Y H:i', $post['Post']['created']); ?>
+					</em>
+				</p>
+				<p class="small span3">Skrivet av: <?php echo $post['User']['username']; ?></p>
+			</div>
+			<hr />	
+		<?php endforeach; ?>
+	</div>
+	<div class="span5">
+		<h2>Svara</h2>
+		<?php
+			echo $this->Form->create('Post', array('action' => 'add/' . $thread['Thread']['id']));
+			echo $this->Form->input('content', array('label' => false, 'rows' => '8', 'class' => 'text-area-fix'));
+		?>
+		<?php 
+			$options = array(
+			    'label' => 'Svara',
+			    'class' => 'btn'
+			);
+			echo $this->Form->end($options); 
+		?>
+	</div>
+</div>

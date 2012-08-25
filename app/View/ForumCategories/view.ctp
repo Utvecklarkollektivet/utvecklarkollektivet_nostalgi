@@ -39,7 +39,7 @@
 <?php echo $this->Html->link('Skapa ny tråd', array('controller' => 'thread', 'action' => 'write', $forumCategories['ForumCategory']['id']),array('class' => 'btn')); ?>
 
 <?php if (count($forumCategories['Thread']) > 0): ?>
-	<div class=" hread_header">
+	<div class="forum_thread_header">
 		<h3>Trådar</h3>
 	</div>
 	<?php foreach($forumCategories['Thread'] as $t): ?>

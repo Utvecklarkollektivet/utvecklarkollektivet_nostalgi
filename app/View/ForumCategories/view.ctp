@@ -1,17 +1,23 @@
 <div class="forum_category">
-	<?php echo $this->Html->link($forumCategories['Forum']['name'], array('controller' => 'forums', 'action' => 'f', $forumCategories['Forum']['id'])); ?>
+	<?php echo '<h3>' . $forumCategories['ForumCategory']['name'] . '</h3>'; ?>
 	<div class="forum_category_logo"></div>
 </div>
 
-<h2>Kategori: <?php echo $forumCategories['ForumCategory']['name']; ?></h2>
-
-<h3>Subkategorier</h3>
 <?php foreach($forumCategories['ChildForumCategories'] as $c): ?>
-	<?php echo $this->Html->link($c['name'], array('controller' => 'forum_categories', 'action' => 'view', $c['id'])); ?><br />
-<?php endforeach; ?>
-<?php echo $this->Html->link('Skriv ny tråd', array('controller' => 'thread', 'action' => 'write', $forumCategories['ForumCategory']['id'])); ?>
-<h3>Trådar i denna kategori:</h3>
-<?php foreach($forumCategories['Thread'] as $t): ?>
-	<?php echo $this->Html->link($t['id'], array('controller' => 'thread', 'action' => 'view', $t['id'])); ?>, <?php echo $t['topic']; ?>
+	<div class="forum_sub_category">
+		<span class="icon-th"></span>
+		<?php echo $this->Html->link($c['name'], array('controller' => 'forum_categories', 'action' => 'view', $c['id'])); ?><br />
+	</div>
 
+<?php endforeach; ?>
+
+<?php echo $this->Html->link('Skapa ny tråd', array('controller' => 'thread', 'action' => 'write', $forumCategories['ForumCategory']['id']),array('class' => 'btn')); ?>
+
+<div class="forum_thread_header">
+	<h3>Trådar</h3>
+</div>
+<?php foreach($forumCategories['Thread'] as $t): ?>
+	<div class="forum_thread">
+		<?php echo $this->Html->link($t['topic'], array('controller' => 'thread', 'action' => 'view', $t['id'])); ?>
+	</div>
 <?php endforeach; ?>

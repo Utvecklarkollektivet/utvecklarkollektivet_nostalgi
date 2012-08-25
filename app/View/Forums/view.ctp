@@ -1,4 +1,4 @@
-<h1><?php echo $thread['Thread']['topic']; ?></h1>
+<h1><?php echo $thread['Thread']['topic']; ?>, BEHÖVS DEN HÄR VIEWN???</h1>
 <p><?php echo $thread['Thread']['content']; ?></p>
 <p><em><?php echo $this->Time->format('F jS, Y H:i', $thread['Thread']['created']); ?></em></p>
 <p>Skriven av: <?php echo $thread['user']['username']; ?>

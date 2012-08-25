@@ -1,4 +1,4 @@
-<h1>Starta en tråd</h1>
+<h1>Starta en tråd, BEHÖVS DEN HÄR VIEWN?</h1>
 <?php
     echo $this->Form->create('Thread');
     echo $this->Form->input('topic');

@@ -432,9 +432,11 @@ input[type="password"]{
       top: 0;
     }
 
-    .forum_sub_category {
+    .forum_sub_category, 
+    .forum_thread {
       height: 60px;
       padding: 0;
+      margin-top: 10px;
       max-width: 960px !important;
       margin-left: 20px;
     }
@@ -445,16 +447,39 @@ input[type="password"]{
       font-size: 24px;
     }
 
-    .forum_sub_category_icon {
+    .forum_sub_category_icon,
+    .forum_thread_icon {
       margin: 10px 0 0 10px;
-      -webkit-transform: scale(2);
-         -moz-transform: scale(2);
-          -ms-transform: scale(2);
-           -o-transform: scale(2);
-              transform: scale(2);
+      -webkit-transform: scale(2.5);
+         -moz-transform: scale(2.5);
+          -ms-transform: scale(2.5);
+           -o-transform: scale(2.5);
+              transform: scale(2.5);
     }
 
-    .forum_sub_category_field_right {
+    .forum_thread_icon {
+      margin-top: 15px;
+    }
+
+    .forum_sub_category_field p,
+    .forum_thread_field p {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .forum_sub_category_field p.small,
+    .forum_thread_field p.small {
+      font-size: 12px;
+    }
+
+    .forum_sub_category_field a, 
+    .forum_sub_category_field a:link,
+    .forum_sub_category_field a:visited {
+      font-size: 14px;
+    }
+
+    .forum_sub_category_field_right,
+    .forum_thread_field {
       text-align: right;
     }
 
@@ -464,17 +489,13 @@ input[type="password"]{
       border: 3px outset #222;
     }
 
-    .forum_topic {
-      margin-top: -10px;
+    .forum_thread_header {
       margin-bottom: 10px;
     }
 
-    .forum_thread {
-      height: 60px;
-      line-height: 60px;
-      border-bottom: 1px solid #ccc;
-      margin: 0;
-      padding: 0 10px;
+    .forum_topic {
+      margin-top: -10px;
+      margin-bottom: 10px;
     }
 
     .forum_thread a,
@@ -483,19 +504,21 @@ input[type="password"]{
       font-size: 20px;
     }
 
-    .thread {
-      padding: 0 30px;
+    .forum_thread_field a, 
+    .forum_thread_field a:link,
+    .forum_thread_field a:visited {
+      font-size: 12px;
+    }
+
+    .forum_thread_name {
+      line-height: 40px;
     }
 
     .thread_info {
       margin-bottom: -10px;
     }
 
-    .lightgreybg {
-      background-color: #efefef;
-    }
-
-/* ============================================ End of Groups */
+/* ============================================ End of Forum */
 
 
 

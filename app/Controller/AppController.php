@@ -58,6 +58,10 @@ class AppController extends Controller {
             'controller' => 'users', 'action' => 'login');
         $this->Auth->loginRedirect = array(
             'controller' => '', 'action' => 'index');
+			
+		// Always keep user and acl as variables in the views
+		$this->set('user', $this->Auth->user());    
+		$this->set('acl', $this->Acl);
     }
 
     /**

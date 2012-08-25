@@ -56,8 +56,8 @@
 					<p class="small">Skapat av <a href="#">ChristofferRydberg</a></p>
 				</div>
 				<div class="span0_5">
-					<div class="icon-edit"></div>
-					<div class="icon-remove"></div>
+					<?php echo $this->Html->link('Edit', array('controller' => 'thread', 'action' => 'edit', $t['id']), array('class' => 'icon-edit hiddentext')); ?>
+					<?php echo $this->Html->link('Edit', array('controller' => 'thread', 'action' => 'delete', $t['id']), array('class' => 'icon-remove hiddentext')); ?>
 				</div>
 			</div>
 		</div>

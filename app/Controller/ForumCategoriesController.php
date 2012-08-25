@@ -106,7 +106,7 @@ class ForumCategoriesController extends AppController {
 		if (!$this->ForumCategory->exists()) {
 			throw new NotFoundException(__('Invalid forum category'));
 		}
-		if ($this->ForumCategory->delete()) {
+		if ($this->ForumCategory->delete($id, true)) {
 			$this->Session->setFlash(__('Forum category deleted'));
 			$this->redirect(array('action' => 'index'));
 		}

@@ -23,6 +23,8 @@
 					</em>
 				</p>
 				<p class="small span3">Skrivet av: <?php echo $post['User']['username']; ?></p>
+				<?php echo $this->Html->link('edit', array('controller' => 'posts', 'action' => 'edit', $post['Post']['id'])); ?>, 
+				<?php echo $this->Html->link('delete', array('controller' => 'posts', 'action' => 'delete', $post['Post']['id'])); ?>
 			</div>
 			<hr />	
 		<?php endforeach; ?>

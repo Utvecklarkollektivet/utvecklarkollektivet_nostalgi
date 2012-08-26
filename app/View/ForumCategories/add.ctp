@@ -12,6 +12,7 @@
 			'empty' => 'Välj Kategori'
 		)); 
 		echo $this->Form->input('name');
+		echo $this->Form->input('description');
 		echo $this->Form->input('hidden');
 		?>
 		<?php 

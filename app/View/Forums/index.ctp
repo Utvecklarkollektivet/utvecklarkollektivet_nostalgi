@@ -12,7 +12,7 @@
 					</div>
 					<div class="span5">
 						<?php echo $this->Html->link($c['name'], array('controller' => 'forum_categories', 'action' => 'view', $c['id'])); ?>
-						<p class="small">Här finns kategorins beskrivning</p>
+						<p class="small"><?php echo $c['description']; ?></p>
 					</div>
 					<div class="span2 forum_sub_category_field forum_sub_category_field_right">
 						<p class="bold">X Poster</p>

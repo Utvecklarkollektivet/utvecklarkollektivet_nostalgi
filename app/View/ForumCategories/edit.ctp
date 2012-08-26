@@ -15,9 +15,15 @@
 			'empty' => 'Välj Kategori'
 		)); 
 		echo $this->Form->input('name');
+		echo $this->Form->input('description');
 		echo $this->Form->input('hidden');
-
-		echo $this->Form->end('Save category');
+		?>
+		<?php 
+			$options = array(
+			    'label' => 'Spara',
+			    'class' => 'btn btn-primary'
+			);
+			echo $this->Form->end($options); 
 		?>
 	</div>
 	<div class="span5 alert warning">

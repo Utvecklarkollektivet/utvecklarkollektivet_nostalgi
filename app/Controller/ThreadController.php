@@ -44,6 +44,7 @@ class ThreadController extends AppController {
 				'Post.hidden' => 0
 			)
 		)));
+		$this->set('breadcrumbs', $this->__makeForumCrumbsArray(2, $id));
 	   
 		
 	}

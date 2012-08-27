@@ -1,7 +1,13 @@
-<?php 
+<?php
+$forumGroup = reset($breadcrumbs['ForumGroup']);
+$forumGroupId = key($breadcrumbs['ForumGroup']);
 $this->Html->addCrumb('Forums', '/forums');
-$this->Html->addCrumb($forumCategories['ForumCategory']['name'], 
-	'/forum_categories/view/' . $forumCategories['ForumCategory']['id']); 
+$this->Html->addCrumb($forumGroup, '/forums/f/' . $forumGroupId);
+
+foreach($breadcrumbs['ForumCategories'] as $id => $name) {
+
+	$this->Html->addCrumb($name, '/forum_categories/view/' . $id);
+}
 ?>
 <div class="forum_category">
 	<?php echo '<h3>' . $forumCategories['ForumCategory']['name'] . '</h3>'; ?>
@@ -16,7 +22,7 @@ $this->Html->addCrumb($forumCategories['ForumCategory']['name'],
 			</div>
 			<div class="span5">
 				<?php echo $this->Html->link($c['name'], array('controller' => 'forum_categories', 'action' => 'view', $c['id'])); ?>
-				<p class="small">Här finns kategorins beskrivning</p>
+				<p class="small"><?php echo $c['description']; ?></p>
 			</div>
 			<div class="span2 forum_sub_category_field forum_sub_category_field_right">
 				<p class="bold">X Poster</p>

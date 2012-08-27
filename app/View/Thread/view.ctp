@@ -1,8 +1,16 @@
-<?php 
+<?php
+$forumGroup = reset($breadcrumbs['ForumGroup']);
+$forumGroupId = key($breadcrumbs['ForumGroup']);
+$crumbThread = reset($breadcrumbs['ForumThread']);
+$crumbThreadId = key($breadcrumbs['ForumThread']);
 $this->Html->addCrumb('Forums', '/forums');
-$this->Html->addCrumb($thread['ForumCategory']['name'], 
-	'/forum_categories/view/' . $thread['ForumCategory']['id']); 
-$this->Html->addCrumb($thread['Thread']['topic'], '/thread/view/' . $thread['Thread']['id']); 
+$this->Html->addCrumb($forumGroup, '/forums/f/' . $forumGroupId);
+
+foreach($breadcrumbs['ForumCategories'] as $id => $name) {
+
+	$this->Html->addCrumb($name, '/forum_categories/view/' . $id);
+}
+$this->Html->addCrumb($crumbThread, '/thread/view/' . $crumbThreadId);
 ?>
 <div class="forum_topic"><h3><?php echo $thread['Thread']['topic']; ?></h3></div>
 

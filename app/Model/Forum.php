@@ -28,4 +28,5 @@ class Forum extends AppModel {
                 'allowEmpty' => false
             )
     );
+	
 }

@@ -121,5 +121,77 @@ class AppController extends Controller {
         if ($this->Auth->User('id') !== null)
         $this->set('menu', $this->Menu->generateMenu($menuArray));
     }
+	
+	/**
+	 * Generate bredcrumb for view depending on which view the users is in
+	 * Type 0 = Forumgroup
+	 * Type 1 = Forumcategory
+	 * Type 2 = Thread
+	 *
+	 * param $type - check above
+	 * param $id - id accociated with the type from above, ex, if type = 1 then $id is the current choosen category
+	 * 
+	 * returns - Array with current breadcrumb (Key Val pairs, key = crumb, value = link)
+	 */
+	 protected function __makeForumCrumbsArray($type, $id) {
+	
+		$this->loadModel('ForumCategory');
+		$this->loadModel('Forum');
+		$this->loadModel('Thread');
+		
+		$crumbs = array();
+		
+		switch($type) {
+			case 0:
+				$forumGroup = $this->Forum->findById($id);
+				$crumbs['ForumGroup'] = array($forumGroup['Forum']['id'] => $forumGroup['Forum']['name']);
+			break;
+			case 1:
+				$forumCategories = $this->ForumCategory->find('all');
+				$forumCategory = $this->ForumCategory->findById($id);
+				
+				$forumGroup = $this->Forum->findById($forumCategory['ForumCategory']['forum_id']);
+				$crumbs['ForumGroup'] = array($forumGroup['Forum']['id'] => $forumGroup['Forum']['name']);
+				
+				$crumbs = array_merge($crumbs, $this->__getCrumbCategories($forumCategories, $id));
+			break;
+			case 2:
+				$thread = $this->Thread->findById($id);
+				$forumCategories = $this->ForumCategory->find('all');
+				$forumCategory = $this->ForumCategory->findById($thread['Thread']['forum_category_id']);
+				
+				$forumGroup = $this->Forum->findById($forumCategory['ForumCategory']['forum_id']);
+				$crumbs['ForumGroup'] = array($forumGroup['Forum']['id'] => $forumGroup['Forum']['name']);
+				
+				$crumbs = array_merge($crumbs, $this->__getCrumbCategories($forumCategories, $thread['Thread']['forum_category_id']));
+				$crumbs['ForumThread'] = array( $thread['Thread']['id'] => $thread['Thread']['topic'] );
+			break;
+		}
+		
+		return $crumbs;
+	}
+	/** 
+	 * Recursive function for retreiving all categories (parent > child > child ..)
+	 *
+	 * return array with accociate array formatted as: ForumCategories => array (id => name, ..)
+	 */
+	protected function __getCrumbCategories($forumCategories, $stopId, $depth = 0) {
+		$retArray = array();
+		foreach($forumCategories as $f) {
+			if ($f['ForumCategory']['id'] == $stopId) {
+				$retArray[$f['ForumCategory']['id'] ] = $f['ForumCategory']['name'];
+				// Does this category have a parent?
+				if ($f['ForumCategory']['forum_category_id'] !== null) {
+					$retArray = $retArray +$this->__getCrumbCategories($forumCategories, $f['ForumCategory']['forum_category_id'] , $depth+1);
+				}
+			}
+		}
+		if ($depth === 0) {
+			// Reverse, higher index = higher level
+			ksort($retArray);
+			$retArray = array('ForumCategories' => $retArray);
+		}
+		return $retArray;
+	}
 
 }

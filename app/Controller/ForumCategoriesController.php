@@ -85,6 +85,7 @@ class ForumCategoriesController extends AppController {
 					'ForumCategory.forum_id', 
 					'ForumCategory.forum_category_id', 
 					'ForumCategory.name',
+					'ForumCategory.description',
 					'ForumCategory.hidden',
 				), 
 				$id

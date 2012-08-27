@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Värd: localhost
--- Skapad: 25 aug 2012 kl 10:26
+-- Skapad: 27 aug 2012 kl 12:52
 -- Serverversion: 5.1.53
 -- PHP-version: 5.3.4
 
@@ -49,13 +49,14 @@ CREATE TABLE IF NOT EXISTS `forum_categories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `description` text NOT NULL,
+  `thread_count` int(11) NOT NULL,
   `hidden` tinyint(1) NOT NULL,
   `forum_id` int(11) NOT NULL,
   `forum_category_id` int(11) DEFAULT NULL,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `modified` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 -- --------------------------------------------------------
 
@@ -75,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `posts` (
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   KEY `thread_id` (`thread_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 -- --------------------------------------------------------
 
@@ -91,12 +92,13 @@ CREATE TABLE IF NOT EXISTS `threads` (
   `content` text NOT NULL,
   `locked` tinyint(1) NOT NULL,
   `hidden` tinyint(1) NOT NULL,
+  `post_count` int(11) NOT NULL,
   `forum_category_id` int(11) NOT NULL,
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

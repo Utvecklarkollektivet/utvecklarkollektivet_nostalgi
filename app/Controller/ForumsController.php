@@ -9,15 +9,7 @@ App::uses('AppController', 'Controller');
 class ForumsController extends AppController {
 
 	public $helpers = array('Html', 'Form');
-	/**
-	 * Temporary to allow all users all functions.
-	 */
-	 /*
-	public function beforeFilter() {
-		parent::beforeFilter();
-		$this->Auth->allow('*');
-	}
-	*/
+
 	/**
 	 * Lists all forums
 	 *

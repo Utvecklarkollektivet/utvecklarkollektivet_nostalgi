@@ -17,20 +17,10 @@ class ThreadController extends AppController {
 	public $helpers = array('Html');
 	
 	public $paginate = array(
-		'limit' => 1,
+		'limit' => 25,
 		'order' => 'Post.created'
 	);
 	
-	
-	/**
-	 *	This should not allow all in the future..
-	 *
-	 */
-	/*
-	public function beforeFilter() {
-		$this->Auth->allow('*');
-	}
-	*/
 	/**
 	* Shows all threads
 	*/

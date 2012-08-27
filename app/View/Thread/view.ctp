@@ -44,6 +44,15 @@ $this->Html->addCrumb($crumbThread, '/thread/view/' . $crumbThreadId);
 			</div>
 			<hr />	
 		<?php endforeach; ?>
+		<div class="pagination">
+			<ul>
+				<?php
+					echo $this->Paginator->prev('< Föregående', array('tag' => 'li', 'class' => ''), null, array('tag' => 'li'));
+					echo $this->Paginator->numbers(array('tag' => 'li', 'separator' => '', 'currentClass' => 'active'));
+					echo $this->Paginator->next('Nästa >', array('tag' => 'li', 'class' => ''), null, array('tag' => 'li'));
+				?>
+			</ul>
+		</div>
 	</div>
 	<div class="span5">
 		<h2>Svara</h2>

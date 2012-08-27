@@ -16,6 +16,11 @@ class ThreadController extends AppController {
 	 */
 	public $helpers = array('Html');
 	
+	public $paginate = array(
+		'limit' => 1,
+		'order' => 'Post.created'
+	);
+	
 	
 	/**
 	 *	This should not allow all in the future..
@@ -38,12 +43,17 @@ class ThreadController extends AppController {
 		// We don't want to join everything since we get the posts alone
 		$this->Thread->recursive = 1; 
 		$this->set('thread', $this->Thread->read());
-		$this->set('posts', $this->Post->find('all', array(
+		$this->set('posts', $this->paginate('Post', array(
+				'Post.thread_id' => $id,
+				'Post.hidden' => 0
+		)));
+		/*$this->set('posts', $this->Post->find('all', array(
 			'conditions' => array(
 				'Post.thread_id' => $id,
 				'Post.hidden' => 0
 			)
 		)));
+		*/
 		$this->set('breadcrumbs', $this->__makeForumCrumbsArray(2, $id));
 	   
 		

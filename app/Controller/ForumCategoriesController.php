@@ -71,6 +71,19 @@ class ForumCategoriesController extends AppController {
 			throw new NotFoundException(__('Invalid forum category'));
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
+			if (!empty($this->request->data['ForumCategory']['forum_category_id'])) {
+				// Use the forum_id from the parent id
+				$cat = $this->ForumCategory->findById($this->request->data['ForumCategory']['forum_category_id']);
+				#echo "A";
+				if (!empty($cat)) {
+					$this->request->data['ForumCategory']['forum_id'] = $cat['ForumCategory']['forum_id'];
+					#echo "B" . $this->request->data['ForumCategory']['forum_id'];
+				} else {
+					#die("C");
+					$this->Session->setFlash('Unable to add category, parent category not found!');
+					$this->redirect($this->referer());
+				}
+			}
 			if ($this->ForumCategory->save($this->request->data)) {
 				$this->Session->setFlash(__('The forum category has been saved'));
 				$this->redirect(array('action' => 'index'));

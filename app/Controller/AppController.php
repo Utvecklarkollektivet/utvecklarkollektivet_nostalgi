@@ -188,7 +188,7 @@ class AppController extends Controller {
 		}
 		if ($depth === 0) {
 			// Reverse, higher index = higher level
-			ksort($retArray);
+			$retArray = array_reverse($retArray, true);
 			$retArray = array('ForumCategories' => $retArray);
 		}
 		return $retArray;

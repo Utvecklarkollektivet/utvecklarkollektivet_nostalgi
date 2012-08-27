@@ -12,10 +12,12 @@ class ForumsController extends AppController {
 	/**
 	 * Temporary to allow all users all functions.
 	 */
+	 /*
 	public function beforeFilter() {
 		parent::beforeFilter();
 		$this->Auth->allow('*');
 	}
+	*/
 	/**
 	 * Lists all forums
 	 *

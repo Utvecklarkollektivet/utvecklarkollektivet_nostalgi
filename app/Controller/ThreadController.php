@@ -26,9 +26,11 @@ class ThreadController extends AppController {
 	 *	This should not allow all in the future..
 	 *
 	 */
+	/*
 	public function beforeFilter() {
 		$this->Auth->allow('*');
 	}
+	*/
 	/**
 	* Shows all threads
 	*/

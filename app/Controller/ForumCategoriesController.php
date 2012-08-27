@@ -9,10 +9,12 @@ class ForumCategoriesController extends AppController {
 		'order' => 'Thread.created'
 	);
 	
+	/*
 	public function beforeFilter() {
 		parent::beforeFilter();
 		$this->Auth->allow('*');
 	}
+	*/
 	
 	public function index() {
 		$this->set('forumCategories', $this->ForumCategory->find('all'));

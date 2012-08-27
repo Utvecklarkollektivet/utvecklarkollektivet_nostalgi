@@ -15,6 +15,7 @@ class ForumCategoriesController extends AppController {
 	}
 	
 	public function view($id = NULL) {
+		$this->ForumCategory->recursive = 2;
 		$this->set('forumCategories', $this->ForumCategory->findById($id));
 		$this->set('breadcrumbs', $this->__makeForumCrumbsArray(1, $id));
 	}

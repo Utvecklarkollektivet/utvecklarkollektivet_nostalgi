@@ -63,8 +63,8 @@ foreach($breadcrumbs['ForumCategories'] as $id => $name) {
 					<?php echo $this->Html->link($t['topic'], array('controller' => 'thread', 'action' => 'view', $t['id'])); ?>
 				</div>
 				<div class="span3 forum_thread_field">
-					<p class="bold">X Posts</p>
-					<p class="small">Skapat av <a href="#">ChristofferRydberg</a></p>
+					<p class="bold"><?php echo $t['post_count']; ?> Posts</p>
+					<p class="small">Skapat av <a href="#"><?php echo $t['User']['username']; ?></a></p>
 				</div>
 				<div class="span0_5">
 					<?php echo $this->Html->link('Edit', array('controller' => 'thread', 'action' => 'edit', $t['id']), array('class' => 'icon-edit hiddentext')); ?>

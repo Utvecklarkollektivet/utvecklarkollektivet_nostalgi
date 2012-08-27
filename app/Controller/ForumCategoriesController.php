@@ -4,6 +4,11 @@ App::uses('AppController', 'Controller');
 
 class ForumCategoriesController extends AppController {
 
+	public $paginate = array(
+		'limit' => 25,
+		'order' => 'Thread.created'
+	);
+	
 	public function beforeFilter() {
 		parent::beforeFilter();
 		$this->Auth->allow('*');
@@ -15,9 +20,15 @@ class ForumCategoriesController extends AppController {
 	}
 	
 	public function view($id = NULL) {
+		$this->loadModel('Thread');
 		$this->ForumCategory->recursive = 2;
 		$this->set('forumCategories', $this->ForumCategory->findById($id));
 		$this->set('breadcrumbs', $this->__makeForumCrumbsArray(1, $id));
+		
+		$this->set('threads', $this->paginate('Thread', array(
+			'Thread.hidden' => 0,
+			'Thread.forum_category_id' => $id
+		)));
 	}
 	
 	public function add() {

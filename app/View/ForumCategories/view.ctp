@@ -49,31 +49,40 @@ foreach($breadcrumbs['ForumCategories'] as $id => $name) {
 
 <?php echo $this->Html->link('Skapa ny tråd', array('controller' => 'thread', 'action' => 'write', $forumCategories['ForumCategory']['id']),array('class' => 'btn')); ?>
 
-<?php if (count($forumCategories['Thread']) > 0): ?>
+<?php if (count($threads) > 0): ?>
 	<div class="forum_thread_header">
 		<h3>Trådar</h3>
 	</div>
-	<?php foreach($forumCategories['Thread'] as $t): ?>
+	<?php foreach($threads as $t):?>
 		<div class="row">
 			<div class="forum_thread">
 				<div class="span0_5">
 					<span class="icon-th forum_thread_icon"></span>
 				</div>
 				<div class="span7 forum_thread_name">
-					<?php echo $this->Html->link($t['topic'], array('controller' => 'thread', 'action' => 'view', $t['id'])); ?>
+					<?php echo $this->Html->link($t['Thread']['topic'], array('controller' => 'thread', 'action' => 'view', $t['Thread']['id'])); ?>
 				</div>
 				<div class="span3 forum_thread_field">
-					<p class="bold"><?php echo $t['post_count']; ?> Posts</p>
+					<p class="bold"><?php echo $t['Thread']['post_count']; ?> Posts</p>
 					<p class="small">Skapat av <a href="#"><?php echo $t['User']['username']; ?></a></p>
 				</div>
 				<div class="span0_5">
-					<?php echo $this->Html->link('Edit', array('controller' => 'thread', 'action' => 'edit', $t['id']), array('class' => 'icon-edit hiddentext')); ?>
-					<?php echo $this->Html->link('Edit', array('controller' => 'thread', 'action' => 'delete', $t['id']), array('class' => 'icon-remove hiddentext')); ?>
+					<?php echo $this->Html->link('Edit', array('controller' => 'thread', 'action' => 'edit', $t['Thread']['id']), array('class' => 'icon-edit hiddentext')); ?>
+					<?php echo $this->Html->link('Edit', array('controller' => 'thread', 'action' => 'delete', $t['Thread']['id']), array('class' => 'icon-remove hiddentext')); ?>
 				</div>
 			</div>
 		</div>
 		<hr />
 	<?php endforeach; ?>
+	<div class="pagination">
+		<ul>
+			<?php
+				echo $this->Paginator->prev('< Föregående', array('tag' => 'li', 'class' => ''), null, array('tag' => 'li'));
+				echo $this->Paginator->numbers(array('tag' => 'li', 'separator' => '', 'currentClass' => 'active'));
+				echo $this->Paginator->next('Nästa >', array('tag' => 'li', 'class' => ''), null, array('tag' => 'li'));
+			?>
+		</ul>
+	</div>
 <?php endif; ?>
 <div class="forum_button">
 	<?php if ($acl->check(array('User' => $user), 'controllers/ForumCategories/add')): ?>

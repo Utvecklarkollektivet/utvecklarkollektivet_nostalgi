@@ -31,14 +31,6 @@ class ForumsController extends AppController {
 	}
 	
 	/**
-	 * Shows only one forum
-	 *
-	 */
-	public function category() {
-		$this->loadModel('Thread');
-		$this->set('threads', $this->Thread->findAllByForumsId($this->params['pass'][0], array(),  array('Thread.created' => 'desc')));
-	}
-	/**
 	 * Write a thread, not currently in use (ThreadController handles this)
 	 *
 	 */
@@ -57,14 +49,8 @@ class ForumsController extends AppController {
 	}
 
 	public function view($id = null) {
-		$this->loadModel('Thread');
-		$this->loadModel('Post');
-
-		$this->Thread->id = $id;
-        // We don't want to join everything since we get the posts alone
-        $this->Thread->recursive = 1; 
-        $this->set('thread', $this->Thread->read());
-        $this->set('posts', $this->Post->findAllByThreadId($id));
+		$this->set('forums', $this->Forum->findById($id));
+		$this->set('breadcrumbs', $this->__makeForumCrumbsArray(0, $id));
 	}
 
     

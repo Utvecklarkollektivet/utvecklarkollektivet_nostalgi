@@ -1,7 +1,7 @@
 <?php $this->Html->addCrumb('Forums', '/forums'); ?>
 <?php foreach($forums as $f): ?>
 	<div class="forum_category">
-    	<?php echo $this->Html->link($f['Forum']['name'], array('controller' => 'forums', 'action' => 'f', $f['Forum']['id'])); ?>
+    	<?php echo $this->Html->link($f['Forum']['name'], array('controller' => 'forums', 'action' => 'view', $f['Forum']['id'])); ?>
     	<div class="forum_category_logo"></div>
 	</div>
 	

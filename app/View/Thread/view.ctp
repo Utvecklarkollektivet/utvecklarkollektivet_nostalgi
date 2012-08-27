@@ -4,7 +4,7 @@ $forumGroupId = key($breadcrumbs['ForumGroup']);
 $crumbThread = reset($breadcrumbs['ForumThread']);
 $crumbThreadId = key($breadcrumbs['ForumThread']);
 $this->Html->addCrumb('Forums', '/forums');
-$this->Html->addCrumb($forumGroup, '/forums/f/' . $forumGroupId);
+$this->Html->addCrumb($forumGroup, '/forums/view/' . $forumGroupId);
 
 foreach($breadcrumbs['ForumCategories'] as $id => $name) {
 

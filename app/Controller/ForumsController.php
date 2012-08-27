@@ -27,7 +27,7 @@ class ForumsController extends AppController {
 				'Forum.hidden' => 0
 			)
 		)));
-		//print_r($this->Forum->find('all'));
+		print_r($this->Forum->find('all'));
 	}
 	
 	/**

@@ -13,7 +13,15 @@ class Thread extends AppModel {
 			)
 		)
 	);
-    public $belongsTo = array('User', 'ForumCategory');
+    public $belongsTo = array(
+		'User', 
+		'ForumCategory' => array(
+			'counterCache' => true,
+			'counterScope' => array(
+				'Thread.hidden' => 0
+			)
+		)
+	);
 
     /*
     Blir något fel här som jag inte har tid att kika på nu

@@ -1,3 +1,9 @@
+<?php 
+$this->Html->addCrumb('Forums', '/forums');
+$this->Html->addCrumb($thread['ForumCategory']['name'], 
+	'/forum_categories/view/' . $thread['ForumCategory']['id']); 
+$this->Html->addCrumb($thread['Thread']['topic'], '/thread/view/' . $thread['Thread']['id']); 
+?>
 <div class="forum_topic"><h3><?php echo $thread['Thread']['topic']; ?></h3></div>
 
 <div class="row">

@@ -11,12 +11,15 @@ class ForumCategoriesController extends AppController {
 	
 	public function index() {
 		$this->set('forumCategories', $this->ForumCategory->find('all'));
+		
 	}
 	
 	public function view($id = NULL) {
 		$this->set('forumCategories', $this->ForumCategory->findById($id));
 		//echo "###";
 		//print_r($this->ForumCategory->findById($id));
+		$forumCategories = $this->ForumCategory->find('all', array('recursive' => -1));
+		var_dump($this->__getCrumbCategories($forumCategories, 5));
 	}
 	
 	public function add() {
@@ -112,6 +115,50 @@ class ForumCategoriesController extends AppController {
 		}
 		$this->Session->setFlash(__('Forum category was not deleted'));
 		$this->redirect(array('action' => 'index'));
+	}
+	/**
+	 * Generate bredcrumb for view depending on which view the users is in
+	 * Type 0 = Forumgroup
+	 * Type 1 = Forumcategory
+	 * Type 2 = Thread
+	 *
+	 * Returns - Array with current breadcrumb (Key Val pairs, key = crumb, value = link)
+	 */
+	 
+	 // Lägg dessa i Forums modell ist..
+	private function __makeCrumbsArray($type, $id) {
+	
+		$this->loadModel('Forum');
+		
+		$crumbs = array();
+		
+		switch($type) {
+			case 0:
+				$forumGroup = $this->Forum->findById($id);
+				$crumbs[$forumGroup['Forum']['name'] ] = $forumGroup['Forum']['id'];
+			break;
+			case 1:
+				$forumCategories = $this->ForumCategories->find('all');
+				array_merge($crumbs, $this->__getCrumbCategories($forumCategories, $id));
+			break;
+		}
+	}
+	
+	private function __getCrumbCategories($forumCategories, $stopId) {
+		$retArray = array();
+		foreach($forumCategories as $f) {
+			if ($f['ForumCategory']['id'] == $stopId) {
+				array_push($retArray, array($f['ForumCategory']['id'] => $f['ForumCategory']['name']) );
+				// Does this category have a parent?
+				if ($f['ForumCategory']['forum_category_id'] !== null) {
+				//print_r($f['ForumCategory']);
+					$retArray = array_merge($retArray, $this->__getCrumbCategories($forumCategories, $f['ForumCategory']['forum_category_id'] ));
+				}
+			}
+		}
+		// Reverse, higher index = higher level
+		$retArray = array_reverse($retArray);
+		return $retArray;
 	}
 
 

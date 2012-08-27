@@ -1,3 +1,4 @@
+<?php $this->Html->addCrumb('Forums', '/forums'); ?>
 <?php foreach($forums as $f): ?>
 	<div class="forum_category">
     	<?php echo $this->Html->link($f['Forum']['name'], array('controller' => 'forums', 'action' => 'f', $f['Forum']['id'])); ?>
@@ -16,7 +17,7 @@
 					</div>
 					<div class="span2 forum_sub_category_field forum_sub_category_field_right">
 						<p class="bold">X Poster</p>
-						<p class="small">X Trådar</p>
+						<p class="small"><?php echo $c['thread_count']; ?> Trådar</p>
 					</div>
 					<div class="span3 forum_sub_category_field">
 						<p>Senaste post av <a href="#">ChristofferRydberg</a></p>

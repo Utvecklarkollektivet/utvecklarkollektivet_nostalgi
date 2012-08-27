@@ -43,6 +43,7 @@
 	</div> <!-- End of #HeaderContainer -->
 
 		<div id="container">
+			<?php echo $this->Html->getCrumbs(' > ', 'Home'); ?>
 			<?php echo $this->fetch('content'); ?>
 			<div class="clearfix"></div>
 		</div>

@@ -1,3 +1,8 @@
+<?php 
+$this->Html->addCrumb('Forums', '/forums');
+$this->Html->addCrumb($forumCategories['ForumCategory']['name'], 
+	'/forum_categories/view/' . $forumCategories['ForumCategory']['id']); 
+?>
 <div class="forum_category">
 	<?php echo '<h3>' . $forumCategories['ForumCategory']['name'] . '</h3>'; ?>
 	<div class="forum_category_logo"></div>
@@ -15,7 +20,7 @@
 			</div>
 			<div class="span2 forum_sub_category_field forum_sub_category_field_right">
 				<p class="bold">X Poster</p>
-				<p class="small">X Trådar</p>
+				<p class="small"><?php echo $c['thread_count']; ?> Trådar</p>
 			</div>
 			<div class="span3 forum_sub_category_field">
 				<p>Senaste post av <a href="#">ChristofferRydberg</a></p>

@@ -22,6 +22,8 @@ $this->Html->addCrumb($crumbThread, '/thread/view/' . $crumbThreadId);
 		<div class="row thread_info">
 			<p class="small span3"><em><?php echo $this->Time->format('F jS, Y H:i', $thread['Thread']['created']); ?></em></p>
 			<p class="small span3">Skriven av: <?php echo $thread['User']['username']; ?>
+			<?php echo $this->Html->link('edit', array('controller' => 'thread', 'action' => 'edit', $thread['Thread']['id'])); ?>, 
+			<?php echo $this->Html->link('delete', array('controller' => 'thread', 'action' => 'delete', $thread['Thread']['id'])); ?>
 		</div>
 
 		<hr />

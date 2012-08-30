@@ -120,10 +120,21 @@ class ThreadController extends AppController {
 		$this->Thread->read(null, $id);
 		$this->Thread->set('hidden', 1);
 		if ($this->Thread->save()) {
-			$this->Session->setFlash(__('Forum thread deleted'));
+			if ($this->request->is('ajax')) {
+				echo json_encode(array('success' => true));
+				return;
+			} else {
+				$this->Session->setFlash(__('Forum thread deleted'));
+				$this->redirect(array('action' => 'index'));
+			}
+		}
+		
+		if ($this->request->is('ajax')) {
+			echo json_ecode(array('success' => false));
+		} else {
+		
+			$this->Session->setFlash(__('Forum thread was not deleted'));
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->Session->setFlash(__('Forum thread was not deleted'));
-		$this->redirect(array('action' => 'index'));
 	}
 }

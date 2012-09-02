@@ -220,12 +220,21 @@ p.small {
       min-width: 400px;
     }
 
+    .text-area-fix-small {
+      max-width: 350px;
+      min-width: 350px;
+    }
+
     .hiddentext {
       text-indent: -9999px;
     }
 
     .bordered {
       border: 1px solid #000;
+    }
+
+    .margin {
+      margin: 0 10px;
     }
 
 /* ============================================ End of Help classes */
@@ -494,7 +503,7 @@ input[type="password"]{
     }
 
     .forum_topic {
-      margin-top: -10px;
+      margin-top: 5px;
       margin-bottom: 10px;
     }
 

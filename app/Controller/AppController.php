@@ -111,11 +111,6 @@ class AppController extends Controller {
                 'link' => '/forums/',
                 'access' => true
             ),
-
-            'Logga ut' => array(
-                'link' => '/users/logout',
-                'access' => true
-            )
         );
 
         if ($this->Auth->User('id') !== null)

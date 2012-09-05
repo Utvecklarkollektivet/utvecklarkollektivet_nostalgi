@@ -36,7 +36,7 @@
 				<ul>
 					<li><a href="#">Profil</a></li>
 					<li><a href="#">Inställningar</a></li>
-					<li><a href="users/logout">Logga ut</a></li>
+					<li><a href="/users/logout">Logga ut</a></li>
 				</ul>
 			</div>
 		</div>

@@ -25,7 +25,7 @@ class ThreadController extends AppController {
 	* Shows all threads
 	*/
 	public function index() {
-		$this->set('threads', $this->Thread->find('all'));
+		$this->redirect('/forums/');
 	}
 	/**
 	 * Single Thread
@@ -55,8 +55,10 @@ class ThreadController extends AppController {
 	 * New post
 	 */
 	public function write($forumCategoryId = NULL) {
+
 		if ($this->request->is('post')) {
 			$this->Thread->set('user_id', $this->Auth->user('id'));
+			$this->request->data['Thread']['content'] = nl2br($this->request->data['Thread']['content']);
 			if ($this->Thread->save($this->request->data)) {
 				$this->Session->setFlash('Your post has been saved.');
 				$this->redirect(array('action' => 'index'));

@@ -5,7 +5,7 @@
     	<div class="forum_category_logo"></div>
 	</div>
 	
-		<?php foreach($f['ForumCategory'] as $c): ?>
+		<?php $i = 0; foreach($f['ForumCategory'] as $c): ?>
 			<div class="row">
 				<div class="forum_sub_category">
 					<div class="span0_5">
@@ -20,8 +20,13 @@
 						<p class="small"><?php echo $c['thread_count']; ?> Trådar</p>
 					</div>
 					<div class="span3 forum_sub_category_field">
-						<p>Senaste post av <a href="#">ChristofferRydberg</a></p>
-						<p>I <a href="#">Utvecklarkollektivet</a></p>
+						<?php if($c['id'] == $forums_data[$i]['id']): ?>
+							<p>Senaste post av <a href="<?=$forums_data[$i]['data']['latest_poster']['id']?>"><?=$forums_data[$i]['data']['latest_poster']['username']?></a></p>
+							<p>I <a href="<?=$forums_data[$i]['data']['latest_thread']['id']?>"><?=$forums_data[$i]['data']['latest_thread']['topic']?></a></p>
+
+						<?php else: ?>
+							<p>Bli den första att skriva ett svar/tråd!</p>
+						<?php endif; ?>
 					</div>
 					<div class="span0_5">
 					<?php if ($acl->check(array('User' => $user), 'controllers/ForumCategories/edit')): ?>
@@ -36,7 +41,7 @@
 				</div>
 			</div>
 			<hr />
-		<?php endforeach; ?>
+		<?php $i++; endforeach; ?>
 	
 <?php endforeach; ?>
 <div class="forum_button">

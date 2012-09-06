@@ -39,7 +39,6 @@ class ForumsController extends AppController {
                 }
             }
         }
-        print_r($data);
 
         $this->set('forums_data', $data);
 

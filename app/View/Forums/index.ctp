@@ -20,11 +20,15 @@
 						<p class="small"><?php echo $c['thread_count']; ?> Trådar</p>
 					</div>
 					<div class="span3 forum_sub_category_field">
-						<?php if($forums_data[$i] != null && $c['id'] == $forums_data[$i]['id']): ?>
-							<p>Senaste post av <a href="/users/view/<?=$forums_data[$i]['data']['latest_poster']['id']?>"><?=$forums_data[$i]['data']['latest_poster']['username']?></a></p>
-							<p>I <a href="/thread/view/<?=$forums_data[$i]['data']['latest_thread']['id']?>"><?=$forums_data[$i]['data']['latest_thread']['topic']?></a></p>
+						<?php 
+							$posts = false;
+							foreach($forums_data as $data):
+								if($c['id'] == $data['id'] && $posts == false): ?>
+								<p>Senaste post av <a href="/users/view/<?=$forums_data[$i]['data']['latest_poster']['id']?>"><?=$forums_data[$i]['data']['latest_poster']['username']?></a></p>
+								<p>I <a href="/thread/view/<?=$forums_data[$i]['data']['latest_thread']['id']?>"><?=$forums_data[$i]['data']['latest_thread']['topic']?></a></p>
+								<?php $posts = true; endif; ?>
 
-						<?php else: ?>
+						<?php endforeach; if(!$posts): ?>
 							<p>Bli den första att skriva ett svar/tråd!</p>
 						<?php endif; ?>
 					</div>

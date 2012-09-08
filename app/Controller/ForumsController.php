@@ -23,18 +23,48 @@ class ForumsController extends AppController {
         $forums =  $this->Forum->find('all');
         $data = array();
 
+
+
         foreach($forums as $forum) {
             foreach($forum as $key => $categories) {
                 if($key == 'ForumCategory') {
                     foreach($categories as $category) {
-                        $thread = $this->Thread->query('SELECT id, topic FROM threads WHERE forum_category_id = ' . $category['id'] . ' ORDER BY modified DESC LIMIT 1');
-                        if(!empty($thread)) {
-                            $post = $this->Post->query('SELECT user_id FROM posts WHERE thread_id = ' . $thread[0]['threads']['id'] . ' ORDER BY created DESC LIMIT 1');
-                            if(!empty($post)) {
-                                $user = $this->User->query('SELECT id, username FROM users WHERE id = '. $post[0]['posts']['user_id'] . ' LIMIT 1');
-                                $data[] = array('id' => $category['id'], 'data' => array('latest_thread' => array('id' => $thread[0]['threads']['id'], 'topic' => $thread[0]['threads']['topic']), 'latest_poster' => array('id' => $user[0]['users']['id'], 'username' => $user[0]['users']['username'])));
+                        $this->Thread->recursive = 0;
+                        $threads = $this->Thread->findAllByForumCategoryId($category['id']);
+
+                        $latestPost = null;
+                        $latestThread = null;
+
+                        foreach($threads as $thread) {
+                            if(!empty($thread)) {
+                                $latest_post_id = $this->Post->field('id', array('created <' => date('Y-m-d H:i:s'), 'thread_id' => $thread['Thread']['id']), 'created DESC');
+                                if($latest_post_id) {
+                                    $current = $this->Post->findById($latest_post_id);
+                                    
+                                    foreach($current as $post) {
+                                        if(!empty($post)) {
+                                            if($latestPost == null) {
+                                                $latestPost = $post;
+                                                $latestThread = $thread['Thread'];
+                                            }
+
+                                            else {
+                                                if($latestPost['created'] < $post['created']) {
+                                                    $latestPost = $post;
+                                                    $latestThread = $thread['Thread'];
+                                                } 
+                                            }
+                                        }
+                                    }
+                                }
                             }
                         }
+
+                        if($latestPost != null && $latestThread != null) {
+                            $user = $this->User->findById($latestPost['user_id']);
+                            $data[] = array('id' => $category['id'], 'data' => array('latest_poster' => array('id' => $user['User']['id'], 'username' => $user['User']['username']), 'latest_thread' => array('id' => $latestThread['id'], 'topic' => $latestThread['topic'])));
+                        }
+                        
                     }
                 }
             }

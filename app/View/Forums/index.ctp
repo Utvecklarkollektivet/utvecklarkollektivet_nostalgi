@@ -24,8 +24,8 @@
 							$posts = false;
 							foreach($forums_data as $data):
 								if($c['id'] == $data['id'] && $posts == false): ?>
-								<p>Senaste post av <a href="/users/view/<?=$forums_data[$i]['data']['latest_poster']['id']?>"><?=$forums_data[$i]['data']['latest_poster']['username']?></a></p>
-								<p>I <a href="/thread/view/<?=$forums_data[$i]['data']['latest_thread']['id']?>"><?=$forums_data[$i]['data']['latest_thread']['topic']?></a></p>
+								<p>Senaste post av <a href="/users/view/<?=$data['data']['latest_poster']['id']?>"><?=$data['data']['latest_poster']['username']?></a></p>
+								<p>I <a href="/thread/view/<?=$data['data']['latest_thread']['id']?>"><?=$data['data']['latest_thread']['topic']?></a></p>
 								<?php $posts = true; endif; ?>
 
 						<?php endforeach; if(!$posts): ?>

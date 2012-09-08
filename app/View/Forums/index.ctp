@@ -16,7 +16,11 @@
 						<p class="small"><?php echo $c['description']; ?></p>
 					</div>
 					<div class="span2 forum_sub_category_field forum_sub_category_field_right">
-						<p class="bold">X Poster</p>
+						<?php 
+							foreach($postcount as $data):
+								if($c['id'] == $data['id']): ?>
+									<p class="bold"><?=$data['posts']?> Poster</p>
+						<?php endif; endforeach; ?>
 						<p class="small"><?php echo $c['thread_count']; ?> Trådar</p>
 					</div>
 					<div class="span3 forum_sub_category_field">

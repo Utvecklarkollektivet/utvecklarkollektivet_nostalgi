@@ -22,6 +22,7 @@ class ForumsController extends AppController {
 		
         $forums =  $this->Forum->find('all');
         $data = array();
+        $numberOfPosts = array();
 
 
 
@@ -34,9 +35,13 @@ class ForumsController extends AppController {
 
                         $latestPost = null;
                         $latestThread = null;
+                        $postCount = 0;
 
                         foreach($threads as $thread) {
                             if(!empty($thread)) {
+
+                                $postCount += $this->Post->find('count', array('conditions' => array('Post.thread_id' => $thread['Thread']['id'])));
+
                                 $latest_post_id = $this->Post->field('id', array('created <' => date('Y-m-d H:i:s'), 'thread_id' => $thread['Thread']['id']), 'created DESC');
                                 if($latest_post_id) {
                                     $current = $this->Post->findById($latest_post_id);
@@ -56,7 +61,7 @@ class ForumsController extends AppController {
                                             }
                                         }
                                     }
-                                }
+                                } 
                             }
                         }
 
@@ -64,6 +69,8 @@ class ForumsController extends AppController {
                             $user = $this->User->findById($latestPost['user_id']);
                             $data[] = array('id' => $category['id'], 'data' => array('latest_poster' => array('id' => $user['User']['id'], 'username' => $user['User']['username']), 'latest_thread' => array('id' => $latestThread['id'], 'topic' => $latestThread['topic'])));
                         }
+
+                        $numberOfPosts[] = array('id' => $category['id'], 'posts' => $postCount);
                         
                     }
                 }
@@ -71,7 +78,7 @@ class ForumsController extends AppController {
         }
 
         $this->set('forums_data', $data);
-
+        $this->set('postcount', $numberOfPosts);
 		$this->set('forums', $this->Forum->find('all', array(
 			'conditions' => array(
 				'Forum.hidden' => 0

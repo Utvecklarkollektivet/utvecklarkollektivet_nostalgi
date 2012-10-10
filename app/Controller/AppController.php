@@ -84,6 +84,10 @@ class AppController extends Controller {
                         'link' => '/users/',
                         'access' => 'controllers/Users/index',
                     ),
+                    'Maila användare ' => array(
+                        'link' => '/users/mail',
+                        'access' => 'controllers/Users/index'
+                    ),
                     'Visa grupper' => array(
                         'link' => '/groups/',
                         'access' => 'controllers/Groups/index'

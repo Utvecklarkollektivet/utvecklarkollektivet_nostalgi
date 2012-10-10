@@ -1,4 +1,5 @@
 <h1>Användarprofil</h1>
+<?php $session->flash(); ?>
 <div class="row">
 	<div class="span7">
 		<h3><?php echo h($user['User']['username']); ?></h3>

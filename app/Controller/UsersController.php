@@ -1,5 +1,6 @@
 <?php
 App::uses('AppController', 'Controller');
+App::uses('CakeEmail', 'Network/Email');
 /**
  * Users Controller
  *
@@ -176,5 +177,39 @@ class UsersController extends AppController {
 		}
 		$this->Session->setFlash(__('User was not deleted'));
 		$this->redirect(array('action' => 'index'));
+	}
+
+	public function mail($id = null) {
+		$this->User->recursive = 0;
+		$this->set('users', $this->paginate('User'));
+		$this->loadModel('Group');
+		$this->set('groups', $this->Group->find('list'));
+		if ($this->request->is('post') || $this->request->is('put')) {
+			$email = new CakeEmail();
+			if (!empty($this->data['User']['selected'])) {
+				foreach($this->data['User']['selected'] as $user_specified) {
+					$mailto = $this->User->findAllByUsername($user_specified);
+					$email->to($mailto[0]['User']['email']);
+					$email->from(array('me@example.com' => 'My Site'));
+					$email->subject($this->data['User']['head']);
+					$email->send($this->data['User']['Text']);
+
+				}
+
+
+			}
+			
+			if(!empty($this->data['User']['group_id'])) {
+				$mail_to_user = $this->User->findAllByGroupId($this->data['User']['group_id']);
+
+				foreach($mail_to_user as $user_mail) {
+					$email->to($user_mail['User']['email']);
+					$email->from(array('noreply@utvecklarkollektivet.se' => 'Utvecklarkollektivet'));
+					$email->subject($this->data['User']['head']);
+					$email->send($this->data['User']['Text']);
+				}
+			}
+
+		}
 	}
 }

@@ -49,6 +49,23 @@
 						)
 					);
 					?>
+
+				</div>
+				<div class="input-prepend">
+					<span class="add-on"><span class="icon-envelope"></span></span>
+					<?php
+					echo $this->Form->input(
+						'email',
+						array(
+							'label' => false,
+							'div' => false,
+							'class' => 'login_field login_act_icon',
+							'placeholder' => 'Email...',
+							'error' => false,
+							'id' => 'prependedInput',
+						)
+					);
+					?>
 				</div>
 				<div class="input-prepend">
 					<span class="add-on"><span class="icon-wrench"></span></span>

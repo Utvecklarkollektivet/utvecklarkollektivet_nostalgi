@@ -19,6 +19,15 @@
 					));
 
 				echo $this->Form->input(
+					'email',
+					 array(
+						'label' => false, 
+						'class' => 'input_field',
+						'rule' => array('email')
+					));
+
+
+				echo $this->Form->input(
 					'group_id', 
 					array(
 						'label' => false, 

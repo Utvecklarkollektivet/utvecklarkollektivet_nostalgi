@@ -147,7 +147,7 @@ class UsersController extends AppController {
 		} else {
 			$this->User->recursive = 0;
 			$this->request->data = $this->User->read(
-				array('User.username', 'Group.id', 'Group.name'), 
+				array('User.username', 'Group.id', 'Group.name', 'User.email'), 
 				$id
 			);
 		}
@@ -190,7 +190,7 @@ class UsersController extends AppController {
 				foreach($this->data['User']['selected'] as $user_specified) {
 					$mailto = $this->User->findAllByUsername($user_specified);
 					$email->to($mailto[0]['User']['email']);
-					$email->from(array('me@example.com' => 'My Site'));
+					$email->from(array('no-reply@utveklarkollektivet.se' => 'Utvecklarkollektivet.se'));
 					$email->subject($this->data['User']['head']);
 					$email->send($this->data['User']['Text']);
 
@@ -204,7 +204,7 @@ class UsersController extends AppController {
 
 				foreach($mail_to_user as $user_mail) {
 					$email->to($user_mail['User']['email']);
-					$email->from(array('noreply@utvecklarkollektivet.se' => 'Utvecklarkollektivet'));
+					$email->from(array('no-reply@utvecklarkollektivet.se' => 'Utvecklarkollektivet.se'));
 					$email->subject($this->data['User']['head']);
 					$email->send($this->data['User']['Text']);
 				}

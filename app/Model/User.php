@@ -56,7 +56,13 @@ class User extends AppModel {
 				'rule' => array('notempty'),
 				'message' => 'Du måste ange ett lösenord...'
 			),
+		),
+		'email' => array(
+			'notempty' => array(
+				'rule' => array('email'),
+				'message' => 'Fel email-format...')
 		)
+
 	);
 
 

@@ -15,7 +15,9 @@
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
+		echo $this->Html->script('jquery-1.7.2');
 	?>
+	<script src="/js/snow.jquery.js"></script>
 </head>
 <body>
 		<?php echo $this->fetch('content'); ?>

@@ -30,7 +30,9 @@ class ThreadController extends AppController {
 	/**
 	 * Single Thread
 	 */
-	public function view($id = null) {
+	public function view($url_name = null) {
+		$thread = $this->Thread->findByUrlName($url_name);
+		$id = $thread['Thread']['id'];
 		$this->Thread->id = $id;
 		// We don't want to join everything since we get the posts alone
 		$this->Thread->recursive = 1; 
@@ -59,11 +61,18 @@ class ThreadController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Thread->set('user_id', $this->Auth->user('id'));
 			$this->request->data['Thread']['content'] = nl2br($this->request->data['Thread']['content']);
+			$this->request->data['Thread']['url_name'] = $this->__Urlencode($this->request->data['Thread']['topic']);
+			
+			/* check for other threads having the same url_name */
+			$thread = $this->Thread->findByUrlName($this->request->data['Thread']['url_name']);
+			if(!empty($thread)) {
+				$this->request->data['Thread']['url_name'] .= $this->__generateTimeString();
+			}
 			if ($this->Thread->save($this->request->data)) {
-				$this->Session->setFlash('Your post has been saved.');
+				$this->Session->setFlash('Din tråd har blivit sparad');
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash('Unable to add your post.');
+				$this->Session->setFlash('Kunde inte spara tråd.. :/');
 			}
 		} else {
 			$this->set('forumCategoryId', $forumCategoryId);
@@ -74,7 +83,9 @@ class ThreadController extends AppController {
 	 * Edit a thread
 	 *
 	 */
-	public function edit($id = null) {
+	public function edit($url_name = null) {
+		$thread = $this->Thread->findByUrlName($url_name);
+		$id = $thread['Thread']['id'];
 		$this->Thread->id = $id;
 		if (!$this->Thread->exists()) {
 			throw new NotFoundException(__('Invalid thread'));
@@ -83,6 +94,14 @@ class ThreadController extends AppController {
 			// Important TODO:
 			// If hidden, locked, forum_category_id is changed it have to be checked here in backend
 			// that the user has access to hide, lock or move the thread
+			$this->request->data['Thread']['url_name'] = $this->__Urlencode($this->request->data['Thread']['topic']);
+			
+			/* check for other threads having the same url_name */
+			$thread = $this->Thread->findByUrlName($this->request->data['Thread']['url_name']);
+			if(!empty($thread)) {
+				$this->request->data['Thread']['url_name'] .= $this->__generateTimeString();
+			}
+		
 			if ($this->Thread->save($this->request->data)) {
 				$this->Session->setFlash(__('The thread has been saved'));
 				$this->redirect(array('action' => 'index'));
@@ -95,7 +114,8 @@ class ThreadController extends AppController {
 			$this->Thread->recursive = 0;
 			$this->request->data = $this->Thread->read(
 				array(
-					'Thread.topic', 
+					'Thread.topic',
+					'Thread.url_name',
 					'Thread.content', 
 					'Thread.locked',
 					'Thread.forum_category_id'
@@ -113,7 +133,10 @@ class ThreadController extends AppController {
 	 * Deleting thread just updates the hidden field to 1
 	 *
 	 */
-	public function delete($id = null) {
+	public function delete($url_name = null) {
+	
+		$thread = $this->Thread->findByUrlName($url_name);
+		$id = $thread['Thread']['id'];
 		
 		$this->Thread->id = $id;
 		if (!$this->Thread->exists()) {

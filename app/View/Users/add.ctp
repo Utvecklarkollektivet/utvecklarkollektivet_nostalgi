@@ -22,6 +22,22 @@
 					<span class="add-on"><span class="icon-user"></span></span>
 					<?php
 					echo $this->Form->input(
+						'display_name',
+						array(
+							'label' => false,
+							'div' => false,
+							'class' => 'login_field login_usr_icon',
+							'placeholder' => 'Visningsnamn..',
+							'error' => false,
+							'id' => 'prependedInput'
+						)
+					);
+					?>
+				</div>
+				<div class="input-prepend">
+					<span class="add-on"><span class="icon-user"></span></span>
+					<?php
+					echo $this->Form->input(
 						'username',
 						array(
 							'label' => false,

@@ -1,0 +1,353 @@
+@mixin gradientBackground($firstColor, $secondColor) {
+    background: $firstColor; /* Old browsers */
+    background: -moz-linear-gradient(top,  $firstColor 25%, $secondColor 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(25%,$firstColor), color-stop(100%,$secondColor)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  $firstColor 25%,$secondColor 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  $firstColor 25%,$secondColor 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  $firstColor 25%,$secondColor 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  $firstColor 25%,$secondColor 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$firstColor', endColorstr='$secondColor',GradientType=0 ); /* IE6-9 */
+}
+
+@mixin reverseGradientBackground($firstColor, $secondColor) {
+    background: $firstColor; /* Old browsers */
+    background: -moz-linear-gradient(top,  $firstColor 0%, $secondColor 75%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$firstColor), color-stop(75%,$secondColor)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  $firstColor 0%,$secondColor 75%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  $firstColor 0%,$secondColor 75%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  $firstColor 0%,$secondColor 75%); /* IE10+ */
+    background: linear-gradient(to bottom,  $firstColor 0%,$secondColor 75%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$firstColor', endColorstr='$secondColor',GradientType=0 ); /* IE6-9 */
+}
+
+/* Basics
+============================================ */
+
+body {
+    background:#e6e6e6; 
+    padding:0; 
+    margin:0;
+}
+
+/* ============================================ End of Basics */ 
+
+/* Structure
+============================================ */
+
+#topborder, #menu {
+    @include gradientBackground(#39a0e5, #137abf);
+}
+
+#topborder {
+    background:#207FBF;
+    padding-bottom: 1em; 
+    width:100%;
+    -webkit-box-shadow: 0px 0px 10px rgba(50, 50, 50, 0.3);
+    -moz-box-shadow:    0px 0px 10px rgba(50, 50, 50, 0.3);
+    box-shadow:         0px 0px 10px rgba(50, 50, 50, 0.3); 
+}
+
+#menu { 
+    z-index: 100;
+    width:960px !important; 
+    padding: 0;
+    margin-top: 50px;
+    border: 1px solid #165780;
+    -webkit-border-radius: 10px;
+    -moz-border-radius:    160px;
+    -khtml-border-radius:  10px;
+    border-radius:         10px; 
+    -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(255, 255, 255, 0.4) inset, 0 -1px 1px rgba(100,100,100, 0.4) inset;
+    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(255, 255, 255, 0.4) inset, 0 -1px 1px rgba(100,100,100, 0.4) inset;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(255, 255, 255, 0.4) inset, 0 -1px 1px rgba(100,100,100, 0.4) inset;
+}
+
+#container { 
+    @include gradientBackground(#ededed, #f7f7f7);
+
+    width:960px; 
+    padding-bottom: 10px;
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    -webkit-border-radius: 10px; -moz-border-radius: 10px; -khtml-border-radius:  10px; border-radius:10px; 
+    -webkit-box-shadow: 0px 0px 10px rgba(50, 50, 50, 0.3); -moz-box-shadow: 0px 0px 10px rgba(50, 50, 50, 0.3); box-shadow: 0px 0px 10px rgba(50, 50, 50, 0.3);
+}   
+
+
+#footer {
+    font-size: 0.7em;
+    text-align:center;
+    color:#666;
+    margin-top:10px;
+}
+
+/* ============================================ End of Structure */
+
+/* Text
+============================================ */
+
+h1,h2,h3,h4,h5,h6 {
+    padding: 0;
+    margin: 10px 0 4px;
+    font-weight: normal;
+}
+
+a:link,
+a:visited,
+a:hover, 
+a:active { 
+    color:#1d7ebf 
+}
+
+a:link    {text-decoration:underline;}
+a:hover   {text-decoration:none;}
+
+/* ============================================ End of Text*/
+
+/* Menu
+============================================ */
+
+#menu a {
+    padding: 8px;
+    display: block;
+    color: #222;
+    text-decoration: none; 
+}
+
+    #menu > ul > li > a {
+        font-size: 1em;
+        font-weight: bold;
+        padding: 15px 0;
+        width: 160px;
+        text-align: center;
+        text-shadow: 0 1px 0 rgba(150,150,150,.8);
+    }
+
+    #menu > ul > li {
+        -webkit-box-shadow: 1px 0 0 rgba(10,65,102,.3), 2px 0 0 rgba(121,199,242,.3);
+        margin: 0px;
+        float: left;
+        list-style: none;
+        position: relative;
+    }
+
+    #menu > ul > li:last-child {
+        -webkit-box-shadow: none;
+    }
+
+    #menu > ul > li > a:hover {
+        @include gradientBackground(#379bdd, #1275b7);
+
+        -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(255, 255, 255, 0.4) inset, 0 -1px 1px rgba(100,100,100, 0.4) inset;
+        -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(255, 255, 255, 0.4) inset, 0 -1px 1px rgba(100,100,100, 0.4) inset;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(255, 255, 255, 0.4) inset, 0 -1px 1px rgba(100,100,100, 0.4) inset;
+    }
+
+    #menu > ul > li > ul > li > a {
+        @include gradientBackground(#258FCC, #207FBF);
+        font-size: 0.8em;
+        text-shadow: 0 1px 0 rgba(150,150,150,.8);
+        border-top: thin solid rgba(225,225,225,.1);
+    }
+
+        #menu ul li ul li a:hover {
+            @include reverseGradientBackground(#3c9ad1,#46ace2);
+        }
+
+#menu ul {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+
+#menu ul li ul {
+    width: 160px;
+    border-radius: 0 0 5px 5px;
+    border: 1px solid #165780;
+    border-top: none;
+    z-index: 100;
+    display: none;
+    position: absolute;
+    left: -1px;
+
+}
+
+#menu ul li ul li {
+    float: none;
+    text-align: left;
+    margin-left: 0;
+}
+
+/* ============================================ End of Menu */
+
+/* Input Fields
+============================================ */
+
+@mixin inputFields(){
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    padding-right: 10px !important;
+    padding-left: 10px;
+    border:#bfbfbf solid thin;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -khtml-border-radius: 4px;
+    border-radius: 4px; 
+    margin-bottom: 5px;
+    font-size: 1em;
+    letter-spacing: 0.1em;
+
+    &:hover, &:focus {
+        box-shadow: 0 0 10px rgba(50,50,50,.2);
+    }
+}
+input[type=text], input[type=password] {
+    @include inputFields();
+    width:200px;
+}
+
+select {
+    @include inputFields();
+    width: 222px !important;
+}
+
+textarea {
+    @include inputFields();
+    min-width: 275px;
+    max-width: 275px;  
+}
+
+input[type=submit], button {
+    margin: 3px 0px;
+    border: 1px solid #777;
+    padding: 5px 15px;
+    cursor: pointer;
+    font-family: Georgia,"Nimbus Roman No9 L",serif;
+    color: #fff;
+    font-size:12px;
+    font-style: italic;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    text-shadow: 0 1px 0 rgba(0,0,0,.5);
+    -moz-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3) inset;
+    -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3) inset;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3) inset;    
+}
+
+input[type=submit] {
+    @include gradientBackground(#e97171, #d14545);
+}
+
+input[type=submit]:hover {
+    @include gradientBackground(#E87F7F, #CE5050);
+}
+
+input[type=submit]:active {
+    @include gradientBackground(#E87F7F, #E87F7F);
+}
+
+    /* Buttons
+    ============================================ */
+
+    button {
+        @include gradientBackground(#999, #666);
+    }
+
+    button:hover {
+        @include gradientBackground(#AAA, #777);
+    }
+
+    button:active {
+        @include gradientBackground(#AAA, #AAA);
+    }
+
+    /* ============================================ End of Buttons */
+
+    /* Register Keys Form
+    ============================================ */
+
+    .registerKeys label {
+        display: block;
+    }
+
+    .actions {
+        margin-top: 20px;
+    }
+
+    .actions li {
+        margin-left: 0;
+        list-style: none;
+    }
+
+    .actions li a {
+        color: #222;
+    }
+
+    /* ============================================ end Register Keys Form */
+
+/* ============================================ End of Input Fields */
+
+
+/* Custom Messages
+============================================ */
+
+.error_message {
+    color: #fff;
+    background: #d96c6c;
+    border: 1px solid #bf4343;
+    padding: 10px;
+    margin: 25px auto;
+    width: 85%;
+    font:italic 14px Georgia,"Nimbus Roman No9 L",serif;
+    color: #fff;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    text-shadow: 0 1px 0 rgba(0,0,0,.5);
+    -moz-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3) inset;
+    -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3) inset;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(255, 255, 255, 0.3) inset;    
+}
+
+/* ============================================ End of Custom Messages*/
+
+/* Users
+============================================ */
+
+.users dt {
+    font-weight: bold;
+}
+
+.users dd {
+    margin-left: 15px;
+    font-size: 0.9em;
+    font-style: italic;
+}
+
+/* ============================================ End of Users */
+/* ClearFix
+============================================ */
+
+.clear_both:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+ 
+.clear_both {
+    display: inline-block;
+}
+ 
+html[xmlns] .clear_both {
+    display: block;
+}
+ 
+* html .clear_both {
+    height: 1%;
+}
+
+/* ============================================ End of ClearFix */

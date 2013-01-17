@@ -3,9 +3,7 @@ $forumGroup = reset($breadcrumbs['ForumGroup']);
 $forumGroupId = key($breadcrumbs['ForumGroup']);
 $this->Html->addCrumb('Forums', '/forums');
 $this->Html->addCrumb($forumGroup, '/forums/view/' . $forumGroupId);
-
 foreach($breadcrumbs['ForumCategories'] as $id => $name) {
-
 	$this->Html->addCrumb($name, '/forum_categories/view/' . $id);
 }
 ?>
@@ -60,15 +58,15 @@ foreach($breadcrumbs['ForumCategories'] as $id => $name) {
 					<span class="icon-th forum_thread_icon"></span>
 				</div>
 				<div class="span7 forum_thread_name">
-					<?php echo $this->Html->link($t['Thread']['topic'], array('controller' => 'thread', 'action' => 'view', $t['Thread']['id'])); ?>
+					<?php echo $this->Html->link($t['Thread']['topic'], array('controller' => 'thread', 'action' => 'view', $t['Thread']['url_name'])); ?>
 				</div>
 				<div class="span3 forum_thread_field">
 					<p class="bold"><?php echo $t['Thread']['post_count']; ?> Posts</p>
 					<p class="small">Skapat av <a href="#"><?php echo $t['User']['username']; ?></a></p>
 				</div>
 				<div class="span0_5">
-					<?php echo $this->Html->link('Edit', array('controller' => 'thread', 'action' => 'edit', $t['Thread']['id']), array('class' => 'icon-edit hiddentext')); ?>
-					<?php echo $this->Html->link('Edit', array('controller' => 'thread', 'action' => 'delete', $t['Thread']['id']), array('class' => 'icon-remove hiddentext')); ?>
+					<?php echo $this->Html->link('Edit', array('controller' => 'thread', 'action' => 'edit', $t['Thread']['url_name']), array('class' => 'icon-edit hiddentext')); ?>
+					<?php echo $this->Html->link('Edit', array('controller' => 'thread', 'action' => 'delete', $t['Thread']['url_name']), array('class' => 'icon-remove hiddentext')); ?>
 				</div>
 			</div>
 		</div>

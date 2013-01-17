@@ -21,10 +21,10 @@
 		</div>
 		<div class="row thread_info">
 			<p class="small span2"><em><?php echo $this->Time->format('F jS, Y H:i', $thread['Thread']['created']); ?></em></p>
-			<p class="small span4">Skriven av: <?php echo $thread['User']['username']; ?></p>
+			<p class="small span4">Skrevs av: <?php echo $thread['User']['display_name'] . ' (' . $thread['User']['username'] . ')'; ?></p>
 			<p class="span1">
-				<?php echo $this->Html->link('edit', array('controller' => 'thread', 'action' => 'edit', $thread['Thread']['id']), array('class' => 'icon-edit hiddentext')); ?>
-				<?php echo $this->Html->link('delete', array('controller' => 'thread', 'action' => 'delete', $thread['Thread']['id']), array('class' => 'icon-remove hiddentext')); ?>
+				<?php echo $this->Html->link('edit', array('controller' => 'thread', 'action' => 'edit', $thread['Thread']['url_name']), array('class' => 'icon-edit hiddentext')); ?>
+				<?php echo $this->Html->link('delete', array('controller' => 'thread', 'action' => 'delete', $thread['Thread']['url_name']), array('class' => 'icon-remove hiddentext')); ?>
 			</p>
 		</div>
 
@@ -40,7 +40,7 @@
 					<?php echo $this->Time->format('F jS, Y H:i', $post['Post']['created']); ?>
 					</em>
 				</p>
-				<p class="small span4">Skrivet av: <?php echo $post['User']['username']; ?></p>
+				<p class="small span4">Skrevs av: <?php echo $post['User']['display_name'] . ' (' . $post['User']['username'] . ')'; ?></p>
 				<p class="span1">
 					<?php echo $this->Html->link('edit', array('controller' => 'posts', 'action' => 'edit', $post['Post']['id']), array('class' => 'icon-edit hiddentext')); ?> 
 					<?php echo $this->Html->link('delete', array('controller' => 'posts', 'action' => 'delete', $post['Post']['id']), array('class' => 'icon-remove hiddentext')); ?>

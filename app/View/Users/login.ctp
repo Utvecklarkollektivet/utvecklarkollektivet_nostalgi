@@ -97,3 +97,9 @@
 	OBS, denna sidan använder cookies. För att veta mer om cookies tryck
 	<a href="#">här</a>
 </div>
+
+		<script>
+			$(document).ready( function(){
+			        $.fn.snow();
+			});
+		</script>

@@ -4,6 +4,13 @@
 		<?php echo $this->Form->create('User'); ?>
 			<?php
 				echo $this->Form->input(
+					'display_name', 
+					array(
+						'label' => false, 
+						'class' => 'input_field',
+					));
+			
+				echo $this->Form->input(
 					'username', 
 					array(
 						'label' => false, 

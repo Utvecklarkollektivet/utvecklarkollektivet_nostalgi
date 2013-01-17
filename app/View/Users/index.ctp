@@ -1,10 +1,11 @@
 <h1>Användare</h1>
 <div class="row">
-	<div class="span10">
+	<div class="span11">
 		<table class="table">
 			<thead>
 				<tr>
 					<th><?php echo $this->Paginator->sort('id'); ?></th>
+					<th><?php echo $this->Paginator->sort('display_name', 'Namn'); ?></th>
 					<th><?php echo $this->Paginator->sort('username', 'Användarnamn'); ?></th>
 					<th><?php echo $this->Paginator->sort('group_id', 'Grupp'); ?></th>
 					<th><?php echo $this->Paginator->sort('created', 'Skapad'); ?></th>
@@ -16,6 +17,9 @@
 		foreach ($users as $user): ?>
 			<tr>
 				<td><?php echo $user['User']['id']; ?>&nbsp;</td>
+				<td>
+					<?php echo $this->Html->link($user['User']['display_name'], array('action' => 'view', $user['User']['id'])); ?>
+				</td>
 				<td>
 					<?php echo $this->Html->link($user['User']['username'], array('action' => 'view', $user['User']['id'])); ?>
 				</td>

@@ -6,7 +6,7 @@ class ForumCategoriesController extends AppController {
 
 	public $paginate = array(
 		'limit' => 25,
-		'order' => 'Thread.created'
+		'order' => 'Thread.created DESC'
 	);
 	
 	
@@ -15,21 +15,27 @@ class ForumCategoriesController extends AppController {
 		
 	}
 	
-	public function view($id = NULL) {
+	public function view($url_name = NULL) {
+		$forum_categories = $this->ForumCategory->findByUrlName($url_name);
+		$id = $forum_categories['ForumCategory']['id'];
+		
 		$this->loadModel('Thread');
 		$this->ForumCategory->recursive = 2;
 		$this->set('forumCategories', $this->ForumCategory->findById($id));
 		$this->set('breadcrumbs', $this->__makeForumCrumbsArray(1, $id));
 		
 		$this->set('threads', $this->paginate('Thread', array(
-			'Thread.hidden' => 0,
-			'Thread.forum_category_id' => $id
-		)));
+		        'Thread.hidden' => 0,
+		        'Thread.forum_category_id' => $id
+		    )
+		));
+		
 	}
 	
 	public function add() {
         if ($this->request->is('post')) {
 			// Check if the user wants to add an sub category or not
+			$this->request->data['ForumCategory']['url_name'] = $this->__Urlencode($this->request->data['ForumCategory']['name']);
 			if (!empty($this->request->data['ForumCategory']['forum_category_id'])) {
 				// Use the forum_id from the parent id
 				$cat = $this->ForumCategory->findById($this->request->data['ForumCategory']['forum_category_id']);
@@ -72,7 +78,9 @@ class ForumCategoriesController extends AppController {
 	 * Edit a forum category
 	 *
 	 */
-	public function edit($id = null) {
+	public function edit($url_name = null) {
+		$forum_categories = $this->ForumCategory->findByUrlName($url_name);
+		$id = $forum_categories['ForumCategory']['id'];
 		$this->ForumCategory->id = $id;
 		if (!$this->ForumCategory->exists()) {
 			throw new NotFoundException(__('Invalid forum category'));
@@ -122,7 +130,10 @@ class ForumCategoriesController extends AppController {
 		}
 	}
 	
-	public function delete($id = null) {
+	public function delete($url_name = null) {
+	
+		$forum_categories = $this->ForumCategory->findByUrlName($url_name);
+		$id = $forum_categories['ForumCategory']['id'];
 		
 		$this->ForumCategory->id = $id;
 		if (!$this->ForumCategory->exists()) {

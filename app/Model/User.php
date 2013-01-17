@@ -26,7 +26,7 @@ class User extends AppModel {
 	 * User hasMany Threads and Posts
 	 * @var array
 	 */
-	public $hasMany = array('Thread', 'Post');
+	public $hasMany = array('Thread', 'Post', 'Comment');
 
 	/**
 	 * Acts as requester in Acl

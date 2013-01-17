@@ -5,7 +5,7 @@ $this->Html->addCrumb('Forums', '/forums');
 $this->Html->addCrumb($forumGroup, '/forums/view/' . $forumGroupId);
 ?>
 	<div class="forum_category">
-    	<?php echo $this->Html->link($forums['Forum']['name'], array('controller' => 'forums', 'action' => 'view', $forums['Forum']['id'])); ?>
+    	<?php echo $this->Html->link($forums['Forum']['name'], array('controller' => 'forums', 'action' => 'view', $forums['Forum']['url_name'])); ?>
     	<div class="forum_category_logo"></div>
 	</div>
 	
@@ -16,7 +16,7 @@ $this->Html->addCrumb($forumGroup, '/forums/view/' . $forumGroupId);
 					<span class="icon-th forum_sub_category_icon"></span>
 				</div>
 				<div class="span5">
-					<?php echo $this->Html->link($c['name'], array('controller' => 'forum_categories', 'action' => 'view', $c['id'])); ?>
+					<?php echo $this->Html->link($c['name'], array('controller' => 'forum_categories', 'action' => 'view', $c['url_name'])); ?>
 					<p class="small"><?php echo $c['description']; ?></p>
 				</div>
 				<div class="span2 forum_sub_category_field forum_sub_category_field_right">
@@ -30,11 +30,11 @@ $this->Html->addCrumb($forumGroup, '/forums/view/' . $forumGroupId);
 				<div class="span0_5">
 				<?php if ($acl->check(array('User' => $user), 'controllers/ForumCategories/edit')): ?>
 					<?php 
-						echo $this->Html->link('Edit', array('controller' => 'ForumCategories', 'action' => 'edit', $c['id']), array('class' => 'icon-edit hiddentext')); 
+						echo $this->Html->link('Edit', array('controller' => 'ForumCategories', 'action' => 'edit', $c['url_name']), array('class' => 'icon-edit hiddentext')); 
 					?>
 				<?php endif; ?>
 				<?php if ($acl->check(array('User' => $user), 'controllers/ForumCategories/delete')): ?>
-					<?php echo $this->Html->link('Delete', array('controller' => 'ForumCategories', 'action' => 'delete', $c['id']), array('class' => 'icon-remove hiddentext')); ?>
+					<?php echo $this->Html->link('Delete', array('controller' => 'ForumCategories', 'action' => 'delete', $c['url_name']), array('class' => 'icon-remove hiddentext')); ?>
 				<?php endif; ?>
 				</div>
 			</div>

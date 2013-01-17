@@ -1,0 +1,87 @@
+@charset "UTF-8";
+
+h1 {
+    font-family:georgia;
+    font-size:30px;
+    text-align:center;
+    font-style:italic;
+    font-weight:200;
+}
+
+h6 {
+    font-size:11px;
+    text-align:center;
+    color:#666;
+    margin-top:-10px;
+    font-weight:100;
+}
+
+
+.login_container { 
+    background:#f5f5f5; 
+    width:640px !important;
+    margin-top:50px; 
+    text-align:left;
+    -webkit-border-radius: 10px 10px 10px 10px;
+    -moz-border-radius:    5px 5px 5px 5px;
+    -khtml-border-radius:  5px 5px 5px 5px;
+    border-radius:         5px 5px 5px 5px; 
+    -webkit-box-shadow: 0px 0px 10px rgba(50, 50, 50, 0.3);
+    -moz-box-shadow:    0px 0px 10px rgba(50, 50, 50, 0.3);
+    box-shadow:         0px 0px 10px rgba(50, 50, 50, 0.3);
+    padding-bottom: 20px;
+}
+
+#login_container_text {
+    padding: 10px;
+    font-family:georgia;
+}
+
+
+
+.login_usr_icon {
+    background-image:url(/img/user-icon.png);
+    background-position:5px center;
+    background-repeat:no-repeat;
+    padding-left:30px !important;
+}
+
+.login_pwd_icon {
+    background-image:url(/img/lock-icon.png);
+    background-position:5px center;
+    background-repeat:no-repeat;
+    padding-left:30px !important;
+}
+
+.login_act_icon {
+    background-image:url(/img/key-icon.png);
+    background-position:5px center;
+    background-repeat:no-repeat;
+    padding-left:30px !important;
+}
+
+.login_field {
+    -moz-border-radius:4px;
+    -webkit-border-radius:4px;
+    width:300px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    padding-right: 10px !important;
+    padding-left: 10px;
+    border:#bfbfbf solid thin;
+    -webkit-border-radius: 4px 4px 4px 4px;
+    -moz-border-radius: 4px 4px 4px 4px;
+    -khtml-border-radius: 4px 4px 4px 4px;
+    border-radius: 4px 4px 4px 4px; 
+    margin-bottom:5px;
+}
+
+.login_submit {
+    margin: 0px 59px 0px 0px !important;
+}
+
+
+.login_forgot_pass {
+    margin: 0px 3px 0px 0px !important;
+}
+    

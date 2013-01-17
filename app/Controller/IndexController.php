@@ -37,6 +37,7 @@ class IndexController extends AppController {
 	 * @var string
 	 */
 	public $name = 'Index';
+	public $helpers = array('Html', 'Form');
 
 	/**
 	 * This controller does not use a model
@@ -50,6 +51,12 @@ class IndexController extends AppController {
 			$this->Auth->allow('display');
 		}
 	}
+	
+	public function news($url) {
+		$this->loadModel('News');
+		$this->set('newsitem', $this->News->findByUrl($url));
+		
+	}
 
 	/**
 	 * Displays a view
@@ -58,5 +65,8 @@ class IndexController extends AppController {
 	 * @return void
 	 */
 	public function display() {
+		$this->loadModel('News');
+		
+		$this->set('news', $this->News->find('all'));
 	}
 }

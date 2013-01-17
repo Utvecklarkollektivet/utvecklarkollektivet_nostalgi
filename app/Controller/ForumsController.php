@@ -105,7 +105,9 @@ class ForumsController extends AppController {
         }
 	}
 
-	public function view($id = null) {
+	public function view($url_name = null) {
+		$forum = $this->Forum->findByUrlName($url_name);
+		$id = $forum['Forum']['id'];
 		$this->set('forums', $this->Forum->findById($id));
 		$this->set('breadcrumbs', $this->__makeForumCrumbsArray(0, $id));
 	}

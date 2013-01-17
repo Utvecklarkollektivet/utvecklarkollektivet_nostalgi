@@ -71,7 +71,7 @@ class AppController extends Controller {
         parent::beforeRender();
 
         $menuArray = array(
-            'Start' => array(
+            'Nyheter' => array(
                 'link' => '/',
                 'access' => 'controllers/Index/display'
             ),
@@ -79,6 +79,7 @@ class AppController extends Controller {
             'Användare' => array(
                 'link' => '/users/',
                 'access' => 'controllers/Users/index',
+                'hasSubmenu' => true,
                 'submenu' => array(
                     'Visa användare' => array(
                         'link' => '/users/',
@@ -113,7 +114,12 @@ class AppController extends Controller {
             
             'Forum' => array(
                 'link' => '/forums/',
-                'access' => true
+                'access' => 'controllers/Forums/index'
+            ),
+            
+            'Logga ut' => array(
+            	'link' => '/users/logout',
+            	'access' => 'controllers/Users/logout'
             ),
         );
 
@@ -143,14 +149,14 @@ class AppController extends Controller {
 		switch($type) {
 			case 0:
 				$forumGroup = $this->Forum->findById($id);
-				$crumbs['ForumGroup'] = array($forumGroup['Forum']['id'] => $forumGroup['Forum']['name']);
+				$crumbs['ForumGroup'] = array($forumGroup['Forum']['url_name'] => $forumGroup['Forum']['name']);
 			break;
 			case 1:
 				$forumCategories = $this->ForumCategory->find('all');
 				$forumCategory = $this->ForumCategory->findById($id);
 				
 				$forumGroup = $this->Forum->findById($forumCategory['ForumCategory']['forum_id']);
-				$crumbs['ForumGroup'] = array($forumGroup['Forum']['id'] => $forumGroup['Forum']['name']);
+				$crumbs['ForumGroup'] = array($forumGroup['Forum']['url_name'] => $forumGroup['Forum']['name']);
 				
 				$crumbs = array_merge($crumbs, $this->__getCrumbCategories($forumCategories, $id));
 			break;
@@ -160,10 +166,10 @@ class AppController extends Controller {
 				$forumCategory = $this->ForumCategory->findById($thread['Thread']['forum_category_id']);
 				
 				$forumGroup = $this->Forum->findById($forumCategory['ForumCategory']['forum_id']);
-				$crumbs['ForumGroup'] = array($forumGroup['Forum']['id'] => $forumGroup['Forum']['name']);
+				$crumbs['ForumGroup'] = array($forumGroup['Forum']['url_name'] => $forumGroup['Forum']['name']);
 				
 				$crumbs = array_merge($crumbs, $this->__getCrumbCategories($forumCategories, $thread['Thread']['forum_category_id']));
-				$crumbs['ForumThread'] = array( $thread['Thread']['id'] => $thread['Thread']['topic'] );
+				$crumbs['ForumThread'] = array( $thread['Thread']['url_name'] => $thread['Thread']['topic'] );
 			break;
 		}
 		
@@ -178,7 +184,7 @@ class AppController extends Controller {
 		$retArray = array();
 		foreach($forumCategories as $f) {
 			if ($f['ForumCategory']['id'] == $stopId) {
-				$retArray[$f['ForumCategory']['id'] ] = $f['ForumCategory']['name'];
+				$retArray[$f['ForumCategory']['url_name'] ] = $f['ForumCategory']['name'];
 				// Does this category have a parent?
 				if ($f['ForumCategory']['forum_category_id'] !== null) {
 					$retArray = $retArray +$this->__getCrumbCategories($forumCategories, $f['ForumCategory']['forum_category_id'] , $depth+1);
@@ -191,6 +197,20 @@ class AppController extends Controller {
 			$retArray = array('ForumCategories' => $retArray);
 		}
 		return $retArray;
+	}
+	
+	protected function __Urlencode($string) {
+		$string = trim($string);
+		$string = strtolower($string);
+		$string = str_replace(array('å', 'ä', 'ö', ' '), array('a', 'a', 'o', '-'), $string);
+		$string = ereg_replace("[^a-z0-9-]", "", $string);
+		$string = ereg_replace("[-]+", "-", $string);
+	
+		return $string;
+	}
+	
+	protected function __generateTimeString() {
+		return '-' . time() . rand();
 	}
 
 }

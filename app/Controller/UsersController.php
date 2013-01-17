@@ -13,7 +13,8 @@ class UsersController extends AppController {
 	 */
 	public $paginate = array(
 		'fields' => array(
-			'User.id', 
+			'User.id',
+			'User.display_name',
 			'User.username', 
 			'User.created', 
 			'Group.name', 

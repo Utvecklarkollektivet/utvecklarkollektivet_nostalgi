@@ -29,7 +29,7 @@
 							foreach($forums_data as $data):
 								if($c['id'] == $data['id'] && $posts == false): ?>
 								<p>Senaste post av <a href="/users/view/<?=$data['data']['latest_poster']['id']?>"><?=$data['data']['latest_poster']['username']?></a></p>
-								<p>I <a href="/thread/view/<?=$data['data']['latest_thread']['id']?>"><?=$data['data']['latest_thread']['topic']?></a></p>
+								<p>I <a href="/thread/view/<?=$data['data']['latest_thread']['url_name']?>"><?=$data['data']['latest_thread']['topic']?></a></p>
 								<?php $posts = true; endif; ?>
 
 						<?php endforeach; if(!$posts): ?>

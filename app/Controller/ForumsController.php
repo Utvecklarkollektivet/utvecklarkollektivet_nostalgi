@@ -67,7 +67,7 @@ class ForumsController extends AppController {
 
                         if($latestPost != null && $latestThread != null) {
                             $user = $this->User->findById($latestPost['user_id']);
-                            $data[] = array('id' => $category['id'], 'data' => array('latest_poster' => array('id' => $user['User']['id'], 'username' => $user['User']['username']), 'latest_thread' => array('id' => $latestThread['id'], 'topic' => $latestThread['topic'])));
+                            $data[] = array('id' => $category['id'], 'data' => array('latest_poster' => array('id' => $user['User']['id'], 'username' => $user['User']['username']), 'latest_thread' => array('url_name' => $latestThread['url_name'], 'topic' => $latestThread['topic'])));
                         }
 
                         $numberOfPosts[] = array('id' => $category['id'], 'posts' => $postCount);

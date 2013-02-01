@@ -13,8 +13,21 @@
 					<h2 id="#comments"><?=$comments_count;?> <?php if($comments_count > 1 || $comments_count == 0): ?> Kommentarer <?php else: ?> Kommentar <?php endif; ?></h2>
 					<?php 
 						foreach($item['comments'] as $comment):
-							echo '<p>' . utf8_encode($comment['content']) . '</p>';
+							echo '<div class="comment">';
+							echo '<p class="comment-body">' . utf8_encode($comment['content']) . '</p>';
+							echo '<p class="comment-author">' . utf8_encode($comment['user_id']) . ' - skrevs ' . $comment['created']  . '</p>';
+							echo '</div>';
 						endforeach;
+						
+						echo '<h2>Skriv en kommentar</h2>';
+						echo $this->Form->create('Comment', array('action' => 'add/' . $item['News']['id']));
+						echo $this->Form->input('content', array('label' => false, 'rows' => '10', 'class' => 'text-area-fix-small'));
+						
+						$options = array(
+						    'label' => 'Svara',
+						    'class' => 'btn'
+						);
+						echo $this->Form->end($options); 
 					?>
 				</div>
 			</div>

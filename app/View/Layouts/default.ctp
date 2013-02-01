@@ -47,6 +47,7 @@
 				if(!in_array($this->request->params['controller'], array('index', 'news')))
 					echo $this->Html->getCrumbs(' > ', 'Nyheter'); 
 			?>
+			<?php echo $this->Session->flash(); ?>
 			<?php echo $this->fetch('content'); ?>
 			<div class="clearfix"></div>
 		<?php if(!in_array($this->request->params['controller'], array('index', 'news'))): ?>

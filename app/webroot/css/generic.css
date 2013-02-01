@@ -260,6 +260,16 @@ h4.main_header_text {
 	background: #eee;
 }
 
+.comment {
+	padding: 10px;
+	background: white;
+	border-radius: 10px;
+}
+
+.comment-author {
+	font-style: italic;
+}
+
 
 /* ======== End of news section ======== */
 

@@ -97,9 +97,15 @@
 	OBS, denna sidan använder cookies. För att veta mer om cookies tryck
 	<a href="#">här</a>
 </div>
-
+<?php
+	// we only want to show snow if its december
+	if(date('MM') == '12'):
+?>
 		<script>
 			$(document).ready( function(){
 			        $.fn.snow();
 			});
 		</script>
+<?php
+	endif;
+?>
